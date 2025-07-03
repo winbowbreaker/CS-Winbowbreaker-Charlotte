@@ -17,13 +17,11 @@ if not _G.charSelectExists then
     djui_popup_create("\\#ffffdc\\\n"..TEXT_MOD_NAME.."\nRequires the Character Select Mod\nto use as a Library!\n\nPlease turn on the Character Select Mod\nand Restart the Room!", 6)
     return 0
 end
-local E_MODEL_GLOW = smlua_model_util_get_id("glows_geo") -- regeneffect
+--E_MODEL_GLOW = smlua_model_util_get_id("glows_geo") -- regeneffect
 
-local E_MODEL_CUSTOM_MODEL = smlua_model_util_get_id("winbch_geo") -- main costume
-local E_MODEL_4THCHA = smlua_model_util_get_id("winbch4th_geo") -- 4th doctor costume
-local E_MODEL_CHAGIRL = smlua_model_util_get_id("gwinbch_geo") -- girl costume
-local E_MODEL_CHAGIRLHEATHER = smlua_model_util_get_id("heathergwinbch_geo") -- heather costume
-local E_MODEL_CHRRRL = smlua_model_util_get_id("gwinbchrrli_geo") -- chrrli costume
+local E_MODEL_CUSTOM_MODEL = smlua_model_util_get_id("CthewinB_geo") -- main costume
+--local E_MODEL_8THCHA = smlua_model_util_get_id("Cthe8th_geo") -- 8th doctor costume
+--local E_MODEL_CHAGIRL = smlua_model_util_get_id("gwinbch_geo") --  costume
 
 --icons
 local TEX_CUSTOM_LIFE_ICON = get_texture_info("Cicon")
@@ -51,7 +49,7 @@ local VOICETABLE_WINBREAKER = {
     [CHAR_SOUND_TWIRL_BOUNCE] = {'wEee.ogg', 'yipeee.ogg'}, -- Bouncing off of a flower spring
     [CHAR_SOUND_GROUND_POUND_WAH] = 'Silent.ogg', 
     [CHAR_SOUND_HRMM] = 'Silent.ogg', -- Lifting something
-    [CHAR_SOUND_HERE_WE_GO] = {'ididit.ogg', 'hl3.ogg', 'polarity.ogg', 'drwho2005reference.mp3', 'jellybaby.ogg'}, -- Star get
+    [CHAR_SOUND_HERE_WE_GO] = {'jellybaby.mp3', "beautiful.mp3"}, -- Star get
     [CHAR_SOUND_SO_LONGA_BOWSER] = 'fuckyou.ogg', -- Throwing Bowser
 --DAMAGE
     [CHAR_SOUND_ATTACKED] = 'walldonk.ogg', -- Damaged
@@ -166,70 +164,66 @@ local VOICETABLE_GIRL = {
 }
 
 local ANIMTABLE_WINCH = {
-    [CHAR_ANIM_RUNNING] = 'newchoppyrun',
-    [CHAR_ANIM_WALKING] = 'newchoppyrun',
+    [CHAR_ANIM_RUNNING] = 'notstolenfromsaul',
+    [CHAR_ANIM_WALKING] = 'notstolenfromsaul',
 
-    --[CHAR_ANIM_CROUCHING] = 'newchoppyidle',
+    --[CHAR_ANIM_CROUCHING] = 'idlemoment',
 
-    [CHAR_ANIM_IDLE_HEAD_CENTER] = 'newchoppyidle',
-    [CHAR_ANIM_IDLE_HEAD_LEFT] = 'newchoppyidle',
-    [CHAR_ANIM_IDLE_HEAD_RIGHT] = 'newchoppyidle',
-    [charSelect.CS_ANIM_MENU] = 'idlingman'
+    [CHAR_ANIM_IDLE_HEAD_CENTER] = 'idlemoment',
+    [CHAR_ANIM_IDLE_HEAD_LEFT] = 'idlemoment',
+    [CHAR_ANIM_IDLE_HEAD_RIGHT] = 'idlemoment',
+    [charSelect.CS_ANIM_MENU] = 'idlealtt'
    -- [CHAR_ANIM_TWIRL] = 'spinnything',
 }
 
 local ANIMTABLE_GWINCH = {
-    [CHAR_ANIM_RUNNING] = 'newchoppyrun',
-    [CHAR_ANIM_WALKING] = 'newchoppyrun',
+    [CHAR_ANIM_RUNNING] = 'notstolenfromsaul',
+    [CHAR_ANIM_WALKING] = 'notstolenfromsaul',
 
     --[CHAR_ANIM_CROUCHING] = 'girlidlenew',
 
     [CHAR_ANIM_IDLE_HEAD_CENTER] = 'girlidlenew',
     [CHAR_ANIM_IDLE_HEAD_LEFT] = 'girlidlenew',
     [CHAR_ANIM_IDLE_HEAD_RIGHT] = 'girlidlenew',
-    [charSelect.CS_ANIM_MENU] = 'idlingman'
+    [charSelect.CS_ANIM_MENU] = 'idlealtt'
    -- [CHAR_ANIM_TWIRL] = 'spinnything',
 }
 
-local ANIMTABLE_SNOWINCH = {
-    [CHAR_ANIM_RUNNING] = 'newchoppyrun',
-    [CHAR_ANIM_WALKING] = 'newchoppyrun',
-
-    [CHAR_ANIM_IDLE_HEAD_CENTER] = 'shiverin',
-    [CHAR_ANIM_IDLE_HEAD_LEFT] = 'shiverin',
-    [CHAR_ANIM_IDLE_HEAD_RIGHT] = 'shiverin',
-  --  [CHAR_ANIM_TWIRL] = 'spinnything',
-}
-
 local ANIMTABLE_DRWINCH = {
-    [CHAR_ANIM_RUNNING] = 'newchoppyrun',
-    [CHAR_ANIM_WALKING] = 'newchoppyrun',
+    [CHAR_ANIM_RUNNING] = 'notstolenfromsaul',
+    [CHAR_ANIM_WALKING] = 'notstolenfromsaul',
 
-    --[CHAR_ANIM_CROUCHING] = 'newchoppyidle',
+    --[CHAR_ANIM_CROUCHING] = 'idlemoment',
 
-    [CHAR_ANIM_IDLE_HEAD_CENTER] = 'newchoppyidle',
-    [CHAR_ANIM_IDLE_HEAD_LEFT] = 'newchoppyidle',
-    [CHAR_ANIM_IDLE_HEAD_RIGHT] = 'newchoppyidle',
+    [CHAR_ANIM_IDLE_HEAD_CENTER] = 'idlemoment',
+    [CHAR_ANIM_IDLE_HEAD_LEFT] = 'idlemoment',
+    [CHAR_ANIM_IDLE_HEAD_RIGHT] = 'idlemoment',
     [charSelect.CS_ANIM_MENU] = 'docpose'
    -- [CHAR_ANIM_TWIRL] = 'spinnything',
 }
 
+animTables = {
+    ANIMTABLE_WINCH,
+    ANIMTABLE_GWINCH,
+    ANIMTABLE_DRWINCH
+}
+
 -- All Located in "actors"
 local CAPTABLE_CHAR = {
-    normal = smlua_model_util_get_id("winbch_geo"),
-    wing = smlua_model_util_get_id("winbch_geo"),
-    metal = smlua_model_util_get_id("winbch_geo"),
+    normal = smlua_model_util_get_id("CthewinB_geo"),
+    wing = smlua_model_util_get_id("CthewinB_geo"),
+    metal = smlua_model_util_get_id("CthewinB_geo"),
 }
 
 local PALETTE_CHAR = {
-    [PANTS]  = "0D133CFF",
-    [SHIRT]  = "FF00FFFF",
-    [GLOVES] = "FFFFFFFF",
-    [SHOES]  = "610061FF",
-    [HAIR]   = "6F3C17FF",
-    [SKIN]   = "FFA06EFF",
-    [CAP]    = "0730AEFF",
-    [EMBLEM] = "FFCA8AFF"
+    [PANTS]  = "130B1DFF",
+    [SHIRT]  = "2E0E4BFF",
+    [GLOVES] = "E5E5FFFF",
+    [SHOES]  = "27123DFF",
+    [HAIR]   = "6C411DFF",
+    [SKIN]   = "FF9D6BFF",
+    [CAP]    = "27123DFF",
+    [EMBLEM] = "E5E5FFFF"
 }
 
 local PALETTE_HEATHER = {
@@ -243,15 +237,15 @@ local PALETTE_HEATHER = {
     [EMBLEM] = "FFCA8AFF"
 }
 
-local PALETTE_4THDOC = {
-    [PANTS]  = "24528BFF",
-    [SHIRT]  = "130A09FF",
+local PALETTE_8THDOC = {
+    [PANTS]  = "867A6FFF",
+    [SHIRT]  = "C8B6A5FF",
     [GLOVES] = "EFEADCFF",
-    [SHOES]  = "000000FF",
-    [HAIR]   = "6F3C17FF",
-    [SKIN]   = "FFA06EFF",
-    [CAP]    = "180D0AFF",
-    [EMBLEM] = "B8824FFF"
+    [SHOES]  = "27231FFF",
+    [HAIR]   = "6C411DFF",
+    [SKIN]   = "FF9D6BFF",
+    [CAP]    = "C8B6A5FF",
+    [EMBLEM] = "A3978DFF"
 }
 
 local PALETTE_CHAGIRL = {
@@ -262,17 +256,6 @@ local PALETTE_CHAGIRL = {
     [HAIR]   = "6F3C17FF",
     [SKIN]   = "FFA06EFF",
     [CAP]    = "00B35AFF",
-    [EMBLEM] = "FFCA8AFF"
-}
-
-local PALETTE_CHRRL = {
-    [PANTS]  = "252A3AFF",
-    [SHIRT]  = "D2C6A1FF",
-    [GLOVES] = "FFFFFFFF",
-    [SHOES]  = "090B0FFF",
-    [HAIR]   = "6F3C17FF",
-    [SKIN]   = "FFA06EFF",
-    [CAP]    = "BBB8AEFF",
     [EMBLEM] = "FFCA8AFF"
 }
 
@@ -295,10 +278,7 @@ local HM_WINBREAKER= {
 
 local CSloaded = false
 local function on_character_select_load()
-    CT_WINBREAKER = _G.charSelect.character_add("Charlie", {"he breaks windows or breakfasts", "probably"}, "WindowBreaker Charlie", {r = 25, g = 0, b = 200}, E_MODEL_CUSTOM_MODEL, CT_WINBREAKER, TEX_CUSTOM_LIFE_ICON)
-    if _G.customMovesExists then
-        djui_popup_create("\\#2328c0\\\n"..TEXT_MOD_NAME.."\ndoesn't need the fucking easy custom movesets shit anymore, FUCK YEAH!", 6)
-    end
+    CT_WINBREAKER = _G.charSelect.character_add("Charlie", {"she breaks windows", "probably", "voiced by Chrrli temporarily"}, "WindowBreaker Charlie", {r = 85, g = 0, b = 150}, E_MODEL_CUSTOM_MODEL, CT_WINBREAKER, TEX_CUSTOM_LIFE_ICON)
 
     --_G.charSelect.character_set_category(CT_WINBREAKER, "Smackhead")
     _G.charSelect.character_set_category(CT_WINBREAKER, "DXA")
@@ -307,41 +287,28 @@ local function on_character_select_load()
 
     --main
     _G.charSelect.character_add_caps(E_MODEL_CUSTOM_MODEL, CAPTABLE_CHAR)
-    _G.charSelect.character_add_voice(E_MODEL_CUSTOM_MODEL, VOICETABLE_WINBREAKER)
+    _G.charSelect.character_add_voice(E_MODEL_CUSTOM_MODEL, VOICETABLE_GIRL)
     _G.charSelect.character_add_animations(E_MODEL_CUSTOM_MODEL, ANIMTABLE_WINCH)
     _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_CHAR)
 
     _G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)
 
-    --4th
-    _G.charSelect.character_add_caps(E_MODEL_4THCHA, CAPTABLE_CHAR)
-    _G.charSelect.character_add_voice(E_MODEL_4THCHA, VOICETABLE_WINBREAKER)
-    _G.charSelect.character_add_animations(E_MODEL_4THCHA, ANIMTABLE_DRWINCH)
-    _G.charSelect.character_add_palette_preset(E_MODEL_4THCHA, PALETTE_4THDOC)
+    --[[8th
+    _G.charSelect.character_add_caps(E_MODEL_8THCHA, CAPTABLE_CHAR)
+    _G.charSelect.character_add_voice(E_MODEL_8THCHA, VOICETABLE_WINBREAKER)
+    _G.charSelect.character_add_animations(E_MODEL_8THCHA, ANIMTABLE_DRWINCH)
+    _G.charSelect.character_add_palette_preset(E_MODEL_8THCHA, PALETTE_8THDOC)
 
     _G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)
 
-    --girl
+    --[[girl
     _G.charSelect.character_add_animations(E_MODEL_CHAGIRL, ANIMTABLE_GWINCH)
     _G.charSelect.character_add_voice(E_MODEL_CHAGIRL, VOICETABLE_GIRL)
-    _G.charSelect.character_add_palette_preset(E_MODEL_CHAGIRL, PALETTE_CHAGIRL)
-
-    --heather
-    _G.charSelect.character_add_animations(E_MODEL_CHAGIRLHEATHER, ANIMTABLE_GWINCH)
-    _G.charSelect.character_add_voice(E_MODEL_CHAGIRLHEATHER, VOICETABLE_GIRL)
-    _G.charSelect.character_add_palette_preset(E_MODEL_CHAGIRLHEATHER, PALETTE_HEATHER)
-
-        --girl
-    _G.charSelect.character_add_animations(E_MODEL_CHRRRL, ANIMTABLE_GWINCH)
-    _G.charSelect.character_add_voice(E_MODEL_CHRRRL, VOICETABLE_GIRL)
-    _G.charSelect.character_add_palette_preset(E_MODEL_CHRRRL, PALETTE_CHRRL)
+    _G.charSelect.character_add_palette_preset(E_MODEL_CHAGIRL, PALETTE_CHAGIRL)]]
 
     --costumes
-    _G.charSelect.character_add_costume(CT_WINBREAKER, "Charlotte", {"she breaks windows or breakfasts", "probably"}, "WindowBreaker Charlie, Voiced by Chrrli", {r = 150, g = 0, b = 200}, E_MODEL_CHAGIRL, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
-    _G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"he breaks windows or time", "fancy a jellybaby?"}, "WindowBreaker Charlie", {r = 0, g = 59, b = 111}, E_MODEL_4THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
-    _G.charSelect.character_add_costume(CT_WINBREAKER, "Heather", {"she silents the fuck outta some hills", "probably"}, "WindowBreaker Charlie, Voiced by Chrrli", {r = 150, g = 0, b = 200}, E_MODEL_CHAGIRLHEATHER, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
-    _G.charSelect.character_add_costume(CT_WINBREAKER, "Chrrlie", {"toaster", "probably"}, "WindowBreaker Charlie, Voiced by Chrrli", {r = 150, g = 0, b = 200}, E_MODEL_CHRRRL, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
-
+   -- _G.charSelect.character_add_costume(CT_WINBREAKER, "Charlotte", {"she breaks windows or breakfasts", "probably"}, "WindowBreaker Charlie, Voiced by Chrrli", {r = 150, g = 0, b = 200}, E_MODEL_CHAGIRL, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
+    --_G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"he breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlie", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     alts = {}
     add_moveset()
     CSloaded = true
@@ -412,7 +379,7 @@ local metreCharlie = {
     get_texture_info("7CHA"),
     get_texture_info("8CHA"),
 }
-
+--[[
 local metreCharlotte = {
     get_texture_info("0CHT"),
     get_texture_info("1CHT"),
@@ -447,15 +414,10 @@ local metreDoctor = {
 --     get_texture_info("6HTH"),
 --     get_texture_info("7HTH"),
 --     get_texture_info("8HTH"),
--- }
+-- }]]
 
 local costumeMetres = {
-    metreCharlie,
-    metreCharlotte,
-    metreDoctor,
-    metreCharlotte,
-    metreCharlotte,
-    -- metreHeather,
+    metreCharlie
 }
 
 local strmDSiStartup = audio_stream_load("dsi-startup.mp3")
@@ -474,8 +436,8 @@ function render_ds_metre()
     
         djui_hud_set_resolution(RESOLUTION_N64)
         
-        local s = .25
-        djui_hud_render_texture(metre[numHealthWedges+1], 4, 240 - (384 + 64)*s, s, s)
+        local s = 1
+        djui_hud_render_texture(metre[numHealthWedges+1], -10, 255 - (-20 - -100)*s, s, s)
     end
 end
 hook_event(HOOK_ON_HUD_RENDER_BEHIND, render_ds_metre)
