@@ -10,7 +10,7 @@
 ]]
 
 local CST_DOC = 0
-local TEXT_MOD_NAME = "BreakfastBreaker Charlie"
+local TEXT_MOD_NAME = "WindowBreaker Charlie"
 
 -- Stops mod from loading if Character Select isn't on
 if not _G.charSelectExists then
@@ -20,6 +20,7 @@ end
 --E_MODEL_GLOW = smlua_model_util_get_id("glows_geo") -- regeneffect
 
 local E_MODEL_CUSTOM_MODEL = smlua_model_util_get_id("CthewinB_geo") -- main costume
+local E_MODEL_SUMMER = smlua_model_util_get_id("CthewinBSun_geo") -- summer costume
 --local E_MODEL_8THCHA = smlua_model_util_get_id("Cthe8th_geo") -- 8th doctor costume
 --local E_MODEL_CHAGIRL = smlua_model_util_get_id("gwinbch_geo") --  costume
 
@@ -226,6 +227,17 @@ local PALETTE_CHAR = {
     [EMBLEM] = "E5E5FFFF"
 }
 
+local PALETTE_SUMMER = {
+    [PANTS]  = "4B4F8BFF",
+    [SHIRT]  = "556BE1FF",
+    [GLOVES] = "E5E5FFFF",
+    [SHOES]  = "E5E5FFFF",
+    [HAIR]   = "6C411DFF",
+    [SKIN]   = "FF9D6BFF",
+    [CAP]    = "27123DFF",
+    [EMBLEM] = "E5E5FFFF"
+}
+
 local PALETTE_HEATHER = {
     [PANTS]  = "215630FF",
     [SHIRT]  = "A34C1CFF",
@@ -299,7 +311,12 @@ local function on_character_select_load()
     _G.charSelect.character_add_animations(E_MODEL_8THCHA, ANIMTABLE_DRWINCH)
     _G.charSelect.character_add_palette_preset(E_MODEL_8THCHA, PALETTE_8THDOC)
 
-    _G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)
+    _G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)]]
+
+    --summer
+    _G.charSelect.character_add_animations(E_MODEL_SUMMER, ANIMTABLE_WINCH)
+    _G.charSelect.character_add_voice(E_MODEL_SUMMER, VOICETABLE_GIRL)
+    _G.charSelect.character_add_palette_preset(E_MODEL_SUMMER, PALETTE_SUMMER)
 
     --[[girl
     _G.charSelect.character_add_animations(E_MODEL_CHAGIRL, ANIMTABLE_GWINCH)
@@ -307,6 +324,7 @@ local function on_character_select_load()
     _G.charSelect.character_add_palette_preset(E_MODEL_CHAGIRL, PALETTE_CHAGIRL)]]
 
     --costumes
+    _G.charSelect.character_add_costume(CT_WINBREAKER, "Charlie (summer)", {nil}, nil, {r = 150, g = 0, b = 200}, E_MODEL_SUMMER, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
    -- _G.charSelect.character_add_costume(CT_WINBREAKER, "Charlotte", {"she breaks windows or breakfasts", "probably"}, "WindowBreaker Charlie, Voiced by Chrrli", {r = 150, g = 0, b = 200}, E_MODEL_CHAGIRL, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
     --_G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"he breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlie", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     alts = {}
