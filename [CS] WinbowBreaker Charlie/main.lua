@@ -263,6 +263,7 @@ local CAPTABLE_CHAR = {
 }
 
 local PALETTE_CHAR = {
+    name = "Charlie",
     [PANTS]  = "0E101AFF",
     [SHIRT]  = "210C6BFF",
     [GLOVES] = "E5E5FFFF",
@@ -370,7 +371,7 @@ local function on_character_select_load()
     _G.charSelect.character_add_palette_preset(E_MODEL_CHAGIRL, PALETTE_CHAGIRL)]]
 
     --costumes
-    _G.charSelect.character_add_costume(CT_WINBREAKER, "Charlie (summer)", {nil}, nil, {r = 150, g = 0, b = 200}, E_MODEL_SUMMER, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
+    --_G.charSelect.character_add_costume(CT_WINBREAKER, "Charlie (summer)", {nil}, nil, {r = 150, g = 0, b = 200}, E_MODEL_SUMMER, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
    -- _G.charSelect.character_add_costume(CT_WINBREAKER, "Charlotte", {"she breaks windows or breakfasts", "probably"}, "WindowBreaker Charlie, Voiced by Chrrli", {r = 150, g = 0, b = 200}, E_MODEL_CHAGIRL, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
     --_G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"he breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlie", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
 
@@ -382,13 +383,14 @@ local function on_character_select_load()
         name = "Kaktus",
         [PANTS]  = "313149",
         [SHIRT]  = "791E82",
-        [GLOVES] = "FF0003",
+        [GLOVES] = "FFFFFF",
         [SHOES]  = "D8004D",
         [HAIR]   = "743F39",
         [SKIN]   = "DB9C70",
         [CAP]    = "3E8948",
 	    [EMBLEM] = "D87644"
     }
+        _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_KAKTUS)
         _G.charSelect.character_add_palette_preset(E_MODEL_BABYKAK, PALETTE_KAKTUS, "Kaktus")
         _G.charSelect.character_add_costume(CT_KAKTUS, "baby kaktus", {"this little BASTARD is", "1 month younger than charlie"}, "WindowBreaker Charlie", {r = 172, g = 80, b = 255}, E_MODEL_BABYKAK, CT_KAKTUS, KAKTUS_ICON, nil, nil)
     end

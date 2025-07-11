@@ -3611,7 +3611,7 @@ Gfx mat_revert_CthewinB_meatal_002[] = {
 
 Gfx mat_CthewinB_f3dlite_material_009[] = {
 	gsSPGeometryMode(G_CULL_BACK, G_TEXTURE_GEN),
-	gsSPSetLights1(CthewinB_f3dlite_material_009_lights),
+	gsSPCopyLightsPlayerPart(HAIR),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, ENVIRONMENT, 0, 0, 0, ENVIRONMENT, PRIMITIVE, 0, PRIMITIVE, COMBINED, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
