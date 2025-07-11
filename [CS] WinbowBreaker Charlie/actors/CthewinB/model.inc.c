@@ -1,5 +1,5 @@
 Lights1 CthewinB_f3dlite_material_010_lights = gdSPDefLights1(
-	0xB, 0x3, 0x31,
+	0xB, 0x3, 0x32,
 	0x21, 0xC, 0x6B, 0x28, 0x28, 0x28);
 
 Lights1 CthewinB_f3dlite_material_015_lights = gdSPDefLights1(
@@ -3528,7 +3528,7 @@ Gfx mat_revert_CthewinB_f3dlite_material_010[] = {
 
 Gfx mat_CthewinB_f3dlite_material_015[] = {
 	gsSPGeometryMode(G_CULL_BACK, 0),
-	gsSPCopyLightsPlayerPart(SHIRT),
+	gsSPCopyLightsPlayerPart(EMBLEM),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
