@@ -337,7 +337,7 @@ local HM_WINBREAKER= {
 
 local CSloaded = false
 local function on_character_select_load()
-    CT_WINBREAKER = _G.charSelect.character_add("Charlie", {"she breaks windows", "probably", "voiced by Chrrli temporarily"}, "WindowBreaker Charlie", {r = 85, g = 0, b = 150}, E_MODEL_CUSTOM_MODEL, CT_WINBREAKER, TEX_CUSTOM_LIFE_ICON)
+    CT_WINBREAKER = _G.charSelect.character_add("Charlie", {"she breaks windows", "probably", "voiced by Chrrli temporarily"}, "WindowBreaker Charlie", {r = 85, g = 0, b = 150}, E_MODEL_CUSTOM_MODEL, CT_MARIO, TEX_CUSTOM_LIFE_ICON)
 
     --_G.charSelect.character_set_category(CT_WINBREAKER, "Smackhead")
     _G.charSelect.character_set_category(CT_WINBREAKER, "DXA")
@@ -392,7 +392,7 @@ local function on_character_select_load()
     }
         _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_KAKTUS)
         _G.charSelect.character_add_palette_preset(E_MODEL_BABYKAK, PALETTE_KAKTUS, "Kaktus")
-        _G.charSelect.character_add_costume(CT_KAKTUS, "baby kaktus", {"this little BASTARD is", "1 month younger than charlie"}, "WindowBreaker Charlie", {r = 172, g = 80, b = 255}, E_MODEL_BABYKAK, CT_KAKTUS, KAKTUS_ICON, nil, nil)
+        _G.charSelect.character_add_costume(CT_KAKTUS, "baby kaktus", {"this little BASTARD is", "1 month younger than charlie"}, "WindowBreaker Charlie", {r = 172, g = 80, b = 255}, E_MODEL_BABYKAK, CT_TOAD, KAKTUS_ICON, nil, nil)
     end
 
     if CT_KAKTUS == nil then
