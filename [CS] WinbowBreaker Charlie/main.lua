@@ -1,4 +1,4 @@
--- name: [CS] WindowBreaker \\#2328c0\\Charlie
+-- name: [CS] WinbowBreaker \\#2328c0\\Charlie
 -- description: thanks to Cooliokid956 for programming the health metre, and for rewriting a lot of code.\n\n\\#ff7777\\This Pack requires Character Select\nto use as a Library!
 
 --[[
@@ -10,7 +10,7 @@
 ]]
 
 local CST_DOC = 0
-local TEXT_MOD_NAME = "WindowBreaker Charlie"
+local TEXT_MOD_NAME = "WinbowBreaker Charlie"
 
 -- Stops mod from loading if Character Select isn't on
 if not _G.charSelectExists then
@@ -21,6 +21,7 @@ end
 
 local E_MODEL_CUSTOM_MODEL = smlua_model_util_get_id("CthewinB_geo") -- main costume
 local E_MODEL_SUMMER = smlua_model_util_get_id("CthewinBSun_geo") -- summer costume
+E_MODEL_BABYKAK = smlua_model_util_get_id("babykakk_geo") -- laughing my arse off about the fact that this shit is actually possible
 --local E_MODEL_8THCHA = smlua_model_util_get_id("Cthe8th_geo") -- 8th doctor costume
 --local E_MODEL_CHAGIRL = smlua_model_util_get_id("gwinbch_geo") --  costume
 
@@ -164,6 +165,51 @@ local VOICETABLE_GIRL = {
    -- [CHAR_SOUND_FLAMEON] = 'flintandsteeel.ogg',
 }
 
+local VOICETABLE_HOORAY = {
+    [CHAR_SOUND_OKEY_DOKEY] = 'hisonlysound.ogg', -- Starting game
+    [CHAR_SOUND_LETS_A_GO] = 'hisonlysound.ogg', -- Starting level
+    [CHAR_SOUND_PUNCH_YAH] = 'hisonlysound.ogg', -- Punch 1
+    [CHAR_SOUND_PUNCH_WAH] = 'hisonlysound.ogg', -- Punch 2
+    [CHAR_SOUND_PUNCH_HOO] = {'hisonlysound.ogg', 'hisonlysound.ogg'}, -- Punch 3
+    [CHAR_SOUND_YAH_WAH_HOO] = {'hisonlysound.ogg', 'hisonlysound.ogg', 'hisonlysound.ogg'}, -- First/Second jump sounds
+    [CHAR_SOUND_HOOHOO] = 'hisonlysound.ogg', -- Third jump sound
+    [CHAR_SOUND_YAHOO_WAHA_YIPPEE] = {'hisonlysound.ogg', 'hisonlysound.ogg'}, -- Triple jump sounds
+    [CHAR_SOUND_UH] = 'hisonlysound.ogg', -- Wall bonk
+    [CHAR_SOUND_UH2] = 'hisonlysound.ogg', -- Landing after long jump
+    [CHAR_SOUND_UH2_2] = 'hisonlysound.ogg', -- Same sound as UH2; jumping onto ledge
+    [CHAR_SOUND_HAHA] = 'hisonlysound.ogg', -- Landing triple jump
+    [CHAR_SOUND_YAHOO] = {'hisonlysound.ogg', 'hisonlysound.ogg', 'hisonlysound.ogg'}, -- Long jump
+    [CHAR_SOUND_DOH] = 'hisonlysound.ogg', -- Long jump wall bonk
+    [CHAR_SOUND_WHOA] = 'hisonlysound.ogg', -- Grabbing ledge
+    [CHAR_SOUND_EEUH] = 'hisonlysound.ogg', -- Climbing over ledge
+    [CHAR_SOUND_WAAAOOOW] = 'hisonlysound.ogg', -- Falling a long distance
+    [CHAR_SOUND_TWIRL_BOUNCE] = 'hisonlysound.ogg', -- Bouncing off of a flower spring
+    [CHAR_SOUND_GROUND_POUND_WAH] = 'hisonlysound.ogg', 
+    [CHAR_SOUND_HRMM] = 'hisonlysound.ogg', -- Lifting something
+    [CHAR_SOUND_HERE_WE_GO] = 'hisonlysound.ogg', -- Star get
+    [CHAR_SOUND_SO_LONGA_BOWSER] = 'hisonlysound.ogg', -- Throwing Bowser
+--DAMAGE
+    [CHAR_SOUND_ATTACKED] = 'hisonlysound.ogg', -- Damaged
+    [CHAR_SOUND_PANTING] = 'hisonlysound.ogg', -- Low health
+    [CHAR_SOUND_ON_FIRE] = 'hisonlysound.ogg', -- Burned
+--SLEEP SOUNDS
+    [CHAR_SOUND_IMA_TIRED] = 'hisonlysound.ogg', -- Mario feeling tired
+    [CHAR_SOUND_YAWNING] = 'hisonlysound.ogg', -- Mario yawning before he sits down to sleep
+    [CHAR_SOUND_SNORING1] = 'hisonlysound.ogg', -- Snore Inhale
+    [CHAR_SOUND_SNORING2] = 'hisonlysound.ogg', -- Exhale
+    [CHAR_SOUND_SNORING3] = 'hisonlysound.ogg', -- Sleep talking / mumbling
+--COUGHING (USED IN THE GAS MAZE)
+    [CHAR_SOUND_COUGHING1] = 'hisonlysound.ogg', -- Cough take 1
+    [CHAR_SOUND_COUGHING2] = 'hisonlysound.ogg', -- Cough take 2
+    [CHAR_SOUND_COUGHING3] = 'hisonlysound.ogg', -- Cough take 3
+--DEATH
+    [CHAR_SOUND_DYING] = 'hisonlysound.ogg', -- Dying from damage
+    [CHAR_SOUND_DROWNING] = 'hisonlysound.ogg', -- Running out of air underwater
+    [CHAR_SOUND_MAMA_MIA] = 'hisonlysound.ogg' -- Booted out of level
+--CUSTOM
+   -- [CHAR_SOUND_FLAMEON] = 'hisonlysound.ogg',
+}
+
 local ANIMTABLE_WINCH = {
     [CHAR_ANIM_RUNNING] = 'notstolenfromsaul',
     [CHAR_ANIM_WALKING] = 'notstolenfromsaul',
@@ -217,14 +263,14 @@ local CAPTABLE_CHAR = {
 }
 
 local PALETTE_CHAR = {
-    [PANTS]  = "130B1DFF",
-    [SHIRT]  = "2E0E4BFF",
+    [PANTS]  = "0E101AFF",
+    [SHIRT]  = "210C6BFF",
     [GLOVES] = "E5E5FFFF",
-    [SHOES]  = "27123DFF",
+    [SHOES]  = "A85D12FF",
     [HAIR]   = "6C411DFF",
     [SKIN]   = "FF9D6BFF",
     [CAP]    = "27123DFF",
-    [EMBLEM] = "E5E5FFFF"
+    [EMBLEM] = "E59B3AFF"
 }
 
 local PALETTE_SUMMER = {
@@ -327,6 +373,29 @@ local function on_character_select_load()
     _G.charSelect.character_add_costume(CT_WINBREAKER, "Charlie (summer)", {nil}, nil, {r = 150, g = 0, b = 200}, E_MODEL_SUMMER, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
    -- _G.charSelect.character_add_costume(CT_WINBREAKER, "Charlotte", {"she breaks windows or breakfasts", "probably"}, "WindowBreaker Charlie, Voiced by Chrrli", {r = 150, g = 0, b = 200}, E_MODEL_CHAGIRL, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
     --_G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"he breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlie", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
+
+    if CT_KAKTUS ~= nil then
+
+    _G.charSelect.character_add_voice(E_MODEL_BABYKAK, VOICETABLE_HOORAY)
+
+    local PALETTE_KAKTUS = {
+        name = "Kaktus",
+        [PANTS]  = "313149",
+        [SHIRT]  = "791E82",
+        [GLOVES] = "FF0003",
+        [SHOES]  = "D8004D",
+        [HAIR]   = "743F39",
+        [SKIN]   = "DB9C70",
+        [CAP]    = "3E8948",
+	    [EMBLEM] = "D87644"
+    }
+        _G.charSelect.character_add_palette_preset(E_MODEL_BABYKAK, PALETTE_KAKTUS, "Kaktus")
+        _G.charSelect.character_add_costume(CT_KAKTUS, "baby kaktus", {"this little BASTARD is", "1 month younger than charlie"}, "WindowBreaker Charlie", {r = 172, g = 80, b = 255}, E_MODEL_BABYKAK, CT_KAKTUS, KAKTUS_ICON, nil, nil)
+    end
+
+    if CT_KAKTUS == nil then
+    end
+
     alts = {}
     add_moveset()
     CSloaded = true
@@ -359,6 +428,7 @@ local voices = {
     [VOICETABLE_WINBREAKER] = 1,
     [VOICETABLE_MUTEDMAN] = 1,
     [VOICETABLE_GIRL] = 1,
+    [VOICETABLE_HOORAY] = 1
 }
 
 local function on_character_sound(m, sound)
