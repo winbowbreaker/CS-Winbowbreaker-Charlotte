@@ -258,7 +258,8 @@ function charlie_update(m)
             "idlemoment",
             "idlemoment",
             "idlemoment",
-            "idlealtt"
+            "idlealtt",
+            "idleposeing"
             -- "add whatever else"
         }
         for _, anims in pairs(animTables) do

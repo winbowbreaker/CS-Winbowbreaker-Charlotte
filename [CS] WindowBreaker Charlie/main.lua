@@ -1,4 +1,4 @@
--- name: [CS] BreakfastBreaker \\#2328c0\\Charlie
+-- name: [CS] WindowBreaker \\#2328c0\\Charlie
 -- description: thanks to Cooliokid956 for programming the health metre, and for rewriting a lot of code.\n\n\\#ff7777\\This Pack requires Character Select\nto use as a Library!
 
 --[[
@@ -435,6 +435,7 @@ local metreDoctor = {
 -- }]]
 
 local costumeMetres = {
+    metreCharlie,
     metreCharlie
 }
 
