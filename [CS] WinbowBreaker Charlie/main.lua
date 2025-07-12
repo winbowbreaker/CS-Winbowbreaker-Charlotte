@@ -274,28 +274,6 @@ local PALETTE_CHAR = {
     [EMBLEM] = "E59B3AFF"
 }
 
-local PALETTE_SUMMER = {
-    [PANTS]  = "4B4F8BFF",
-    [SHIRT]  = "556BE1FF",
-    [GLOVES] = "E5E5FFFF",
-    [SHOES]  = "E5E5FFFF",
-    [HAIR]   = "6C411DFF",
-    [SKIN]   = "FF9D6BFF",
-    [CAP]    = "27123DFF",
-    [EMBLEM] = "E5E5FFFF"
-}
-
-local PALETTE_HEATHER = {
-    [PANTS]  = "215630FF",
-    [SHIRT]  = "A34C1CFF",
-    [GLOVES] = "FFFFFFFF",
-    [SHOES]  = "994424FF",
-    [HAIR]   = "6F3C17FF",
-    [SKIN]   = "FFA06EFF",
-    [CAP]    = "CFC2A4FF",
-    [EMBLEM] = "FFCA8AFF"
-}
-
 local PALETTE_8THDOC = {
     [PANTS]  = "867A6FFF",
     [SHIRT]  = "C8B6A5FF",
@@ -305,17 +283,6 @@ local PALETTE_8THDOC = {
     [SKIN]   = "FF9D6BFF",
     [CAP]    = "C8B6A5FF",
     [EMBLEM] = "A3978DFF"
-}
-
-local PALETTE_CHAGIRL = {
-    [PANTS]  = "123773FF",
-    [SHIRT]  = "383838FF",
-    [GLOVES] = "FFFFFFFF",
-    [SHOES]  = "00994CFF",
-    [HAIR]   = "6F3C17FF",
-    [SKIN]   = "FFA06EFF",
-    [CAP]    = "00B35AFF",
-    [EMBLEM] = "FFCA8AFF"
 }
 
 local HM_WINBREAKER= {
