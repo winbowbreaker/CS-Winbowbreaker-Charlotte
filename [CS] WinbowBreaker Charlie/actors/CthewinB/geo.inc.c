@@ -155,7 +155,7 @@ const GeoLayout CthewinB_7_LoD_Switch__Unused__opt0_Cap_State_Switch_opt1_Caples
 const GeoLayout CthewinB_7_LoD_Switch__Unused__opt0_Cap_State_Switch_opt1[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
-		GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 59, 0, NULL),
+		GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 49, 0, NULL),
 		GEO_OPEN_NODE(),
 			GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
 			GEO_OPEN_NODE(),
@@ -361,7 +361,7 @@ const GeoLayout CthewinB_7_LoD_Switch__Unused__opt0_Cap_State_Switch_opt2_jump_C
 const GeoLayout CthewinB_7_LoD_Switch__Unused__opt0_Cap_State_Switch_opt2[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
-		GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 59, 0, NULL),
+		GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 49, 0, NULL),
 		GEO_OPEN_NODE(),
 			GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
 			GEO_OPEN_NODE(),
@@ -560,7 +560,7 @@ const GeoLayout CthewinB_7_LoD_Switch__Unused__opt0_Cap_State_Switch_opt3_jump_C
 const GeoLayout CthewinB_7_LoD_Switch__Unused__opt0_Cap_State_Switch_opt3[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
-		GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 59, 0, NULL),
+		GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 49, 0, NULL),
 		GEO_OPEN_NODE(),
 			GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
 			GEO_OPEN_NODE(),
@@ -767,7 +767,7 @@ const GeoLayout CthewinB_geo[] = {
 						GEO_OPEN_NODE(),
 							GEO_NODE_START(),
 							GEO_OPEN_NODE(),
-								GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 59, 0, NULL),
+								GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 49, 0, NULL),
 								GEO_OPEN_NODE(),
 									GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
 									GEO_OPEN_NODE(),

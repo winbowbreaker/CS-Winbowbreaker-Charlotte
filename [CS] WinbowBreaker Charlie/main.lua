@@ -330,7 +330,6 @@ local function on_character_select_load()
     --summer
     _G.charSelect.character_add_animations(E_MODEL_SUMMER, ANIMTABLE_WINCH)
     _G.charSelect.character_add_voice(E_MODEL_SUMMER, VOICETABLE_GIRL)
-    _G.charSelect.character_add_palette_preset(E_MODEL_SUMMER, PALETTE_SUMMER)
 
     --[[girl
     _G.charSelect.character_add_animations(E_MODEL_CHAGIRL, ANIMTABLE_GWINCH)
