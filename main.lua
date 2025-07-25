@@ -1,5 +1,6 @@
--- name: [CS] WinbowBreaker \\#2328c0\\Charlie
+-- name: [CS] WinbowBreaker \\#2328c0\\Charlotte
 -- description: thanks to Cooliokid956 for programming the health metre, and for rewriting a lot of code.\n\n\\#ff7777\\This Pack requires Character Select\nto use as a Library!
+-- category: cs
 
 --[[
     API Documentation for Character Select can be found below:
@@ -10,7 +11,7 @@
 ]]
 
 local CST_DOC = 0
-local TEXT_MOD_NAME = "WinbowBreaker Charlie"
+local TEXT_MOD_NAME = "WinbowBreaker Charlotte"
 
 -- Stops mod from loading if Character Select isn't on
 if not _G.charSelectExists then
@@ -20,7 +21,6 @@ end
 --E_MODEL_GLOW = smlua_model_util_get_id("glows_geo") -- regeneffect
 
 local E_MODEL_CUSTOM_MODEL = smlua_model_util_get_id("CthewinB_geo") -- main costume
-local E_MODEL_SUMMER = smlua_model_util_get_id("CthewinBSun_geo") -- summer costume
 E_MODEL_BABYKAK = smlua_model_util_get_id("babykakk_geo") -- laughing my arse off about the fact that this shit is actually possible
 --local E_MODEL_8THCHA = smlua_model_util_get_id("Cthe8th_geo") -- 8th doctor costume
 --local E_MODEL_CHAGIRL = smlua_model_util_get_id("gwinbch_geo") --  costume
@@ -263,15 +263,15 @@ local CAPTABLE_CHAR = {
 }
 
 local PALETTE_CHAR = {
-    name = "Charlie",
-    [PANTS]  = "0E101AFF",
-    [SHIRT]  = "210C6BFF",
+    name = "Charlotte",
+    [PANTS]  = "733F1DFF",
+    [SHIRT]  = "131251FF",
     [GLOVES] = "E5E5FFFF",
-    [SHOES]  = "A85D12FF",
-    [HAIR]   = "6C411DFF",
+    [SHOES]  = "1F1F23FF",
+    [HAIR]   = "985A2CFF",
     [SKIN]   = "FF9D6BFF",
     [CAP]    = "27123DFF",
-    [EMBLEM] = "E59B3AFF"
+    [EMBLEM] = "05031AFF"
 }
 
 local PALETTE_8THDOC = {
@@ -304,13 +304,15 @@ local HM_WINBREAKER= {
 
 local CSloaded = false
 local function on_character_select_load()
-    CT_WINBREAKER = _G.charSelect.character_add("Charlie", {"she breaks windows", "probably", "voiced by Chrrli temporarily"}, "WindowBreaker Charlie", {r = 85, g = 0, b = 150}, E_MODEL_CUSTOM_MODEL, CT_MARIO, TEX_CUSTOM_LIFE_ICON)
+    CT_WINBREAKER = _G.charSelect.character_add("Charlotte", {"she breaks windows", "probably", "voiced by Chrrli temporarily"}, "WindowBreaker Charlie", {r = 85, g = 0, b = 150}, E_MODEL_CUSTOM_MODEL, CT_MARIO, TEX_CUSTOM_LIFE_ICON)
 
     --_G.charSelect.character_set_category(CT_WINBREAKER, "Smackhead")
     _G.charSelect.character_set_category(CT_WINBREAKER, "DXA")
     _G.charSelect.character_set_category(CT_WINBREAKER, "Squishy Workshop")
     _G.charSelect.character_add_health_meter(CT_WINBREAKER, HM_WINBREAKER)
 
+    local CSTUNECHARLIE = audio_stream_load("holyshitmusicreal.ogg")
+    _G.charSelect.character_add_menu_instrumental(CT_WINBREAKER, CSTUNECHARLIE)
     --main
     _G.charSelect.character_add_caps(E_MODEL_CUSTOM_MODEL, CAPTABLE_CHAR)
     _G.charSelect.character_add_voice(E_MODEL_CUSTOM_MODEL, VOICETABLE_GIRL)
