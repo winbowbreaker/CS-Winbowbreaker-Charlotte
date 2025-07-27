@@ -22,8 +22,8 @@ end
 
 local E_MODEL_CUSTOM_MODEL = smlua_model_util_get_id("CthewinB_geo") -- main costume
 E_MODEL_BABYKAK = smlua_model_util_get_id("babykakk_geo") -- laughing my arse off about the fact that this shit is actually possible
---local E_MODEL_8THCHA = smlua_model_util_get_id("Cthe8th_geo") -- 8th doctor costume
---local E_MODEL_CHAGIRL = smlua_model_util_get_id("gwinbch_geo") --  costume
+local E_MODEL_8THCHA = smlua_model_util_get_id("Cthe8th_geo") -- 8th doctor costume
+local E_MODEL_OLDFIT = smlua_model_util_get_id("classiclassic_geo") --  costume
 
 --icons
 local TEX_CUSTOM_LIFE_ICON = get_texture_info("Cicon")
@@ -274,6 +274,18 @@ local PALETTE_CHAR = {
     [EMBLEM] = "05031AFF"
 }
 
+local PALETTE_CLASSIC = {
+    name = "Classic Charlotte",
+    [PANTS]  = "211E47FF",
+    [SHIRT]  = "7F1952FF",
+    [GLOVES] = "E5E5FFFF",
+    [SHOES]  = "1F1F23FF",
+    [HAIR]   = "985A2CFF",
+    [SKIN]   = "FF9D6BFF",
+    [CAP]    = "27123DFF",
+    [EMBLEM] = "05031AFF"
+}
+
 local PALETTE_8THDOC = {
     [PANTS]  = "867A6FFF",
     [SHIRT]  = "C8B6A5FF",
@@ -304,12 +316,15 @@ local HM_WINBREAKER= {
 
 local CSloaded = false
 local function on_character_select_load()
-    CT_WINBREAKER = _G.charSelect.character_add("Charlotte", {"she breaks windows", "probably", "voiced by Chrrli temporarily"}, "WindowBreaker Charlie", {r = 85, g = 0, b = 150}, E_MODEL_CUSTOM_MODEL, CT_MARIO, TEX_CUSTOM_LIFE_ICON)
+    CT_WINBREAKER = _G.charSelect.character_add("Charlotte", {"she breaks windows", "probably", "voiced by Chrrli temporarily"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_CUSTOM_MODEL, CT_MARIO, TEX_CUSTOM_LIFE_ICON)
 
     --_G.charSelect.character_set_category(CT_WINBREAKER, "Smackhead")
     _G.charSelect.character_set_category(CT_WINBREAKER, "DXA")
     _G.charSelect.character_set_category(CT_WINBREAKER, "Squishy Workshop")
     _G.charSelect.character_add_health_meter(CT_WINBREAKER, HM_WINBREAKER)
+
+    local CSGRAFFITICHARLIE = get_texture_info("charlottegraffiti")
+    _G.charSelect.character_add_grafitti(CT_WINBREAKER, CSGRAFFITICHARLIE)
 
     local CSTUNECHARLIE = audio_stream_load("holyshitmusicreal.ogg")
     _G.charSelect.character_add_menu_instrumental(CT_WINBREAKER, CSTUNECHARLIE)
@@ -319,29 +334,24 @@ local function on_character_select_load()
     _G.charSelect.character_add_animations(E_MODEL_CUSTOM_MODEL, ANIMTABLE_WINCH)
     _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_CHAR)
 
+    --_G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)
+
+    --8th
+    _G.charSelect.character_add_caps(E_MODEL_8THCHA, CAPTABLE_CHAR)
+    _G.charSelect.character_add_voice(E_MODEL_8THCHA, VOICETABLE_GIRL)
+    _G.charSelect.character_add_animations(E_MODEL_8THCHA, ANIMTABLE_WINCH)
+    _G.charSelect.character_add_palette_preset(E_MODEL_8THCHA, PALETTE_CHAR)
+
     _G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)
 
-    --[[8th
-    _G.charSelect.character_add_caps(E_MODEL_8THCHA, CAPTABLE_CHAR)
-    _G.charSelect.character_add_voice(E_MODEL_8THCHA, VOICETABLE_WINBREAKER)
-    _G.charSelect.character_add_animations(E_MODEL_8THCHA, ANIMTABLE_DRWINCH)
-    _G.charSelect.character_add_palette_preset(E_MODEL_8THCHA, PALETTE_8THDOC)
-
-    _G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)]]
-
-    --summer
-    _G.charSelect.character_add_animations(E_MODEL_SUMMER, ANIMTABLE_WINCH)
-    _G.charSelect.character_add_voice(E_MODEL_SUMMER, VOICETABLE_GIRL)
-
-    --[[girl
-    _G.charSelect.character_add_animations(E_MODEL_CHAGIRL, ANIMTABLE_GWINCH)
-    _G.charSelect.character_add_voice(E_MODEL_CHAGIRL, VOICETABLE_GIRL)
-    _G.charSelect.character_add_palette_preset(E_MODEL_CHAGIRL, PALETTE_CHAGIRL)]]
+    --classic fit
+    _G.charSelect.character_add_animations(E_MODEL_OLDFIT, ANIMTABLE_WINCH)
+    _G.charSelect.character_add_voice(E_MODEL_OLDFIT, VOICETABLE_GIRL)
+    _G.charSelect.character_add_palette_preset(E_MODEL_OLDFIT, PALETTE_CLASSIC)
 
     --costumes
-    --_G.charSelect.character_add_costume(CT_WINBREAKER, "Charlie (summer)", {nil}, nil, {r = 150, g = 0, b = 200}, E_MODEL_SUMMER, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
-   -- _G.charSelect.character_add_costume(CT_WINBREAKER, "Charlotte", {"she breaks windows or breakfasts", "probably"}, "WindowBreaker Charlie, Voiced by Chrrli", {r = 150, g = 0, b = 200}, E_MODEL_CHAGIRL, CT_WINBREAKER, TEX_GIRL_LIFE_ICON, nil, nil)
-    --_G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"he breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlie", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
+    _G.charSelect.character_add_costume(CT_WINBREAKER, "Classic Charlotte", {"SHE breaks windows or something", "brought back from the egg days"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_OLDFIT, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
+    _G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"She breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlotte", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
 
     if CT_KAKTUS ~= nil then
 
@@ -360,7 +370,7 @@ local function on_character_select_load()
     }
         _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_KAKTUS)
         _G.charSelect.character_add_palette_preset(E_MODEL_BABYKAK, PALETTE_KAKTUS, "Kaktus")
-        _G.charSelect.character_add_costume(CT_KAKTUS, "baby kaktus", {"this little BASTARD is", "1 month younger than charlie"}, "WindowBreaker Charlie", {r = 172, g = 80, b = 255}, E_MODEL_BABYKAK, CT_TOAD, KAKTUS_ICON, nil, nil)
+        _G.charSelect.character_add_costume(CT_KAKTUS, "baby kaktus", {"this little BASTARD is", "1 month younger than charlotte"}, "WindowBreaker Charlotte", {r = 172, g = 80, b = 255}, E_MODEL_BABYKAK, CT_TOAD, KAKTUS_ICON, nil, nil)
     end
 
     if CT_KAKTUS == nil then

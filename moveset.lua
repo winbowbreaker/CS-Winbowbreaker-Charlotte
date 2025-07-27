@@ -469,15 +469,21 @@ function charlie_update(m)
 
     if m.action == ACT_WALKING      then m.forwardVel = m.forwardVel * 1.035 end
     if m.action == ACT_HOLD_WALKING then m.forwardVel = m.forwardVel * 1.25  end
-    if m.action == ACT_TWIRLING     then m.forwardVel = m.forwardVel * 1.15  end
+    if m.action == ACT_TWIRLING  and (m.input & INPUT_ZERO_MOVEMENT == 0) then m.forwardVel = m.forwardVel * 1.1 end
+    if m.action == ACT_TWIRLING  and (m.input & INPUT_ZERO_MOVEMENT ~= 0) then m.forwardVel = m.forwardVel * 0.9 end
+
+    if m.action == ACT_FORWARD_ROLLOUT and m.prevAction == ACT_DIVE_SLIDE and m.controller.buttonPressed & B_BUTTON ~= 0 then
+        m.action = ACT_DIVE
+    end
 
     if m.action == ACT_JUMP
-    or m.action == ACT_DOUBLE_JUMP then m.vel.y = m.vel.y * 1.03  end
-    if m.action == ACT_TRIPLE_JUMP then m.vel.y = m.vel.y * 1.03 end
+    or m.action == ACT_DOUBLE_JUMP and m.prevAction ~= ACT_GROUND_POUND_LAND then m.vel.y = m.vel.y -1.25  end
+    if m.action == ACT_TRIPLE_JUMP then m.vel.y = m.vel.y -0.5 end
     if m.action == ACT_SIDE_FLIP   then m.vel.y = m.vel.y * 1.04  end
+    if m.action == ACT_GROUND_POUND then m.vel.y = m.vel.y * 1.25 end
 
-    if m.action == ACT_DIVE      then m.forwardVel = m.forwardVel * 1.25; m.vel.y = m.vel.y * 1.025 end
-    if m.action == ACT_LONG_JUMP then m.forwardVel = m.forwardVel * 1.05; m.vel.y = m.vel.y * 1.015 end
+    if m.action == ACT_DIVE      then m.forwardVel = m.forwardVel * 1.25; m.vel.y = m.vel.y * 1.025 - 1.1  end
+    if m.action == ACT_LONG_JUMP then m.forwardVel = m.forwardVel * 1.05; m.vel.y = m.vel.y * 1.015 - 0.05 end
 
     if m.forwardVel >= 85 and m.action == ACT_TWIRLING  then m.forwardVel = 85  end
     if m.forwardVel >= 85 and m.action == ACT_LONG_JUMP then m.forwardVel = 85  end
