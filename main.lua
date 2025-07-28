@@ -505,7 +505,7 @@ local DSiplayed = true
 function render_ds_metre()
     local m = gMarioStates[0]
     local metre = costumeMetres[charSelect.character_get_current_costume()]
-    if metre and charSelect.character_get_current_number() == CT_WINBREAKER then
+    if metre and charSelect.character_get_current_number() == CT_WINBREAKER and m.action ~= ACT_END_PEACH_CUTSCENE then
         local numHealthWedges = m.health > 0 and math.min(m.health >> 8, 8) or 0
         local fullyHealed = numHealthWedges >= 8
         if fullyHealed and fullyHealed ~= DSiplayed then

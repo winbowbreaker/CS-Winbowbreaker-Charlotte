@@ -133,6 +133,7 @@ function act_supersprint(m)
         set_mario_action(m, ACT_FREEFALL, 0)
         set_character_animation(m, CHAR_ANIM_GENERAL_FALL)
     elseif (stepResult == GROUND_STEP_NONE) then
+        m.vel.y = 0
         anim_and_audio_for_walk(m)
         if ((m.intendedMag - m.forwardVel) > 16) then
             set_mario_particle_flags(m, PARTICLE_DUST, 0)
@@ -144,10 +145,12 @@ function act_supersprint(m)
     end
 
     if (should_begin_sliding(m) ~= 0) then
+        m.vel.y = 0
         return set_mario_action(m, ACT_BEGIN_SLIDING, 0)
     end
 
     if (m.input & INPUT_FIRST_PERSON ~= 0) then
+        m.vel.y = 0
         return begin_braking_action(m)
     end
 
@@ -160,6 +163,7 @@ function act_supersprint(m)
     end
 
     if (m.input & INPUT_ZERO_MOVEMENT ~= 0) then
+        m.vel.y = 0
         return begin_braking_action(m)
     end
 
@@ -272,12 +276,12 @@ function charlie_update(m)
     --bj_scale_xyz(m.marioObj, c.scale.x, c.scale.y, c.scale.z)
     vec3f_copy(m.marioObj.header.gfx.scale, c.scale)
 
-    if m.vel.y >= 0 or m.action == ACT_GROUND_POUND_LAND or m.action ~= ACT_IDLE or m.action == ACT_BUTT_SLIDE_STOP or m.action == ACT_SPINNYTHING then
+    --[[if m.vel.y >= 0 or m.action == ACT_GROUND_POUND_LAND or m.action ~= ACT_IDLE or m.action == ACT_BUTT_SLIDE_STOP or m.action == ACT_SPINNYTHING then
         c.scale = { x = m.vel.y * -0.0015 + 1, y = m.vel.y*  0.0015 + 1, z = m.vel.y * -0.0015 + 1 }
     end
     if m.vel.y <= 0 and m.action ~= ACT_IDLE and m.action ~= ACT_GROUND_POUND_LAND and m.action ~= ACT_BUTT_SLIDE_STOP and m.action ~= ACT_SPINNYTHING then
         c.scale = { x = m.vel.y * 0.0015 + 1, y = m.vel.y*  -0.0015 + 1, z = m.vel.y * 0.0015 + 1 }
-    end
+    end]]
 
     if m.action ~= ACT_AIR_HIT_WALL and m.action ~= ACT_WALL_SLIDE then
         c.savedmomentum = m.forwardVel
@@ -471,6 +475,9 @@ function charlie_update(m)
     if m.action == ACT_HOLD_WALKING then m.forwardVel = m.forwardVel * 1.25  end
     if m.action == ACT_TWIRLING  and (m.input & INPUT_ZERO_MOVEMENT == 0) then m.forwardVel = m.forwardVel * 1.1 end
     if m.action == ACT_TWIRLING  and (m.input & INPUT_ZERO_MOVEMENT ~= 0) then m.forwardVel = m.forwardVel * 0.9 end
+    if m.vel.y <= 2 then
+        m.vel.y = m.vel.y - 1.1
+    end
 
     if m.action == ACT_FORWARD_ROLLOUT and m.prevAction == ACT_DIVE_SLIDE and m.controller.buttonPressed & B_BUTTON ~= 0 then
         m.action = ACT_DIVE
