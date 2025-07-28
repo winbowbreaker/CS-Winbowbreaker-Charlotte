@@ -1,0 +1,4 @@
+Put .ogg files here and then write the names of these files in your main.lua file.
+
+
+Silent.ogg can be used in place of a sound effect if you'd rather your character not make a sound for a certain action.

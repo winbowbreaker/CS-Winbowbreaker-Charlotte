@@ -23,7 +23,8 @@ end
 local E_MODEL_CUSTOM_MODEL = smlua_model_util_get_id("CthewinB_geo") -- main costume
 E_MODEL_BABYKAK = smlua_model_util_get_id("babykakk_geo") -- laughing my arse off about the fact that this shit is actually possible
 local E_MODEL_8THCHA = smlua_model_util_get_id("Cthe8th_geo") -- 8th doctor costume
-local E_MODEL_OLDFIT = smlua_model_util_get_id("classiclassic_geo") --  costume
+local E_MODEL_OLDFIT = smlua_model_util_get_id("classiclassic_geo") -- classic costume
+local E_MODEL_SWAGGER = smlua_model_util_get_id("swaggyC_geo") -- swagger costume
 
 --icons
 local TEX_CUSTOM_LIFE_ICON = get_texture_info("Cicon")
@@ -286,15 +287,16 @@ local PALETTE_CLASSIC = {
     [EMBLEM] = "05031AFF"
 }
 
-local PALETTE_8THDOC = {
-    [PANTS]  = "867A6FFF",
-    [SHIRT]  = "C8B6A5FF",
-    [GLOVES] = "EFEADCFF",
-    [SHOES]  = "27231FFF",
-    [HAIR]   = "6C411DFF",
+local PALETTE_SWAGGER = {
+    name = "Swagger Charlotte",
+    [PANTS]  = "1F1E25FF",
+    [SHIRT]  = "28A89CFF",
+    [GLOVES] = "E5E5FFFF",
+    [SHOES]  = "1F1F23FF",
+    [HAIR]   = "985A2CFF",
     [SKIN]   = "FF9D6BFF",
-    [CAP]    = "C8B6A5FF",
-    [EMBLEM] = "A3978DFF"
+    [CAP]    = "27123DFF",
+    [EMBLEM] = "05031AFF"
 }
 
 local HM_WINBREAKER= {
@@ -349,9 +351,15 @@ local function on_character_select_load()
     _G.charSelect.character_add_voice(E_MODEL_OLDFIT, VOICETABLE_GIRL)
     _G.charSelect.character_add_palette_preset(E_MODEL_OLDFIT, PALETTE_CLASSIC)
 
+    _G.charSelect.character_add_caps(E_MODEL_SWAGGER, CAPTABLE_CHAR)
+    _G.charSelect.character_add_voice(E_MODEL_SWAGGER, VOICETABLE_GIRL)
+    _G.charSelect.character_add_animations(E_MODEL_SWAGGER, ANIMTABLE_WINCH)
+    _G.charSelect.character_add_palette_preset(E_MODEL_SWAGGER, PALETTE_SWAGGER)
+
     --costumes
     _G.charSelect.character_add_costume(CT_WINBREAKER, "Classic Charlotte", {"SHE breaks windows or something", "brought back from the egg days"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_OLDFIT, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     _G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"She breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlotte", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
+    _G.charSelect.character_add_costume(CT_WINBREAKER, "Swagger Charlotte", {"the return of :swagger:", "B)"}, "WindowBreaker Charlotte", {r = 0, g = 150, b = 150}, E_MODEL_SWAGGER, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
 
     if CT_KAKTUS ~= nil then
 
@@ -485,6 +493,8 @@ local metreDoctor = {
 -- }]]
 
 local costumeMetres = {
+    metreCharlie,
+    metreCharlie,
     metreCharlie,
     metreCharlie
 }
