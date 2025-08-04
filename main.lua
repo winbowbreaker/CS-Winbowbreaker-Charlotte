@@ -121,7 +121,7 @@ local VOICETABLE_MUTEDMAN = {
    -- [CHAR_SOUND_FLAMEON] = 'Silent.ogg',
 }
 
-local VOICETABLE_GIRL = {
+VOICETABLE_CHARLOTTEGIRL = {
     [CHAR_SOUND_OKEY_DOKEY] = 'dsi-startup2.mp3', -- Starting game
     [CHAR_SOUND_LETS_A_GO] = 'Silent.ogg', -- Starting level
     [CHAR_SOUND_PUNCH_YAH] = 'Silent.ogg', -- Punch 1
@@ -166,7 +166,7 @@ local VOICETABLE_GIRL = {
    -- [CHAR_SOUND_FLAMEON] = 'flintandsteeel.ogg',
 }
 
-local VOICETABLE_HOORAY = {
+VOICETABLE_HOORAY = {
     [CHAR_SOUND_OKEY_DOKEY] = 'hisonlysound.ogg', -- Starting game
     [CHAR_SOUND_LETS_A_GO] = 'hisonlysound.ogg', -- Starting level
     [CHAR_SOUND_PUNCH_YAH] = 'hisonlysound.ogg', -- Punch 1
@@ -211,7 +211,7 @@ local VOICETABLE_HOORAY = {
    -- [CHAR_SOUND_FLAMEON] = 'hisonlysound.ogg',
 }
 
-local ANIMTABLE_WINCH = {
+ANIMTABLE_CHARLOTTE = {
     [CHAR_ANIM_RUNNING] = 'notstolenfromsaul',
     [CHAR_ANIM_WALKING] = 'notstolenfromsaul',
 
@@ -221,39 +221,11 @@ local ANIMTABLE_WINCH = {
     [CHAR_ANIM_IDLE_HEAD_LEFT] = 'idlemoment',
     [CHAR_ANIM_IDLE_HEAD_RIGHT] = 'idlemoment',
     [charSelect.CS_ANIM_MENU] = 'idlealtt'
-   -- [CHAR_ANIM_TWIRL] = 'spinnything',
-}
-
-local ANIMTABLE_GWINCH = {
-    [CHAR_ANIM_RUNNING] = 'notstolenfromsaul',
-    [CHAR_ANIM_WALKING] = 'notstolenfromsaul',
-
-    --[CHAR_ANIM_CROUCHING] = 'girlidlenew',
-
-    [CHAR_ANIM_IDLE_HEAD_CENTER] = 'girlidlenew',
-    [CHAR_ANIM_IDLE_HEAD_LEFT] = 'girlidlenew',
-    [CHAR_ANIM_IDLE_HEAD_RIGHT] = 'girlidlenew',
-    [charSelect.CS_ANIM_MENU] = 'idlealtt'
-   -- [CHAR_ANIM_TWIRL] = 'spinnything',
-}
-
-local ANIMTABLE_DRWINCH = {
-    [CHAR_ANIM_RUNNING] = 'notstolenfromsaul',
-    [CHAR_ANIM_WALKING] = 'notstolenfromsaul',
-
-    --[CHAR_ANIM_CROUCHING] = 'idlemoment',
-
-    [CHAR_ANIM_IDLE_HEAD_CENTER] = 'idlemoment',
-    [CHAR_ANIM_IDLE_HEAD_LEFT] = 'idlemoment',
-    [CHAR_ANIM_IDLE_HEAD_RIGHT] = 'idlemoment',
-    [charSelect.CS_ANIM_MENU] = 'docpose'
    -- [CHAR_ANIM_TWIRL] = 'spinnything',
 }
 
 animTables = {
-    ANIMTABLE_WINCH,
-    ANIMTABLE_GWINCH,
-    ANIMTABLE_DRWINCH
+    ANIMTABLE_CHARLOTTE
 }
 
 -- All Located in "actors"
@@ -263,10 +235,10 @@ local CAPTABLE_CHAR = {
     metal = smlua_model_util_get_id("CthewinB_geo"),
 }
 
-local PALETTE_CHAR = {
+PALETTE_CHARLOTTE = {
     name = "Charlotte",
-    [PANTS]  = "733F1DFF",
-    [SHIRT]  = "131251FF",
+    [PANTS]  = "232938FF",
+    [SHIRT]  = "0E112BFF",
     [GLOVES] = "E5E5FFFF",
     [SHOES]  = "1F1F23FF",
     [HAIR]   = "985A2CFF",
@@ -275,7 +247,7 @@ local PALETTE_CHAR = {
     [EMBLEM] = "05031AFF"
 }
 
-local PALETTE_CLASSIC = {
+PALETTE_CHARLOTTE_CLASSIC = {
     name = "Classic Charlotte",
     [PANTS]  = "211E47FF",
     [SHIRT]  = "7F1952FF",
@@ -287,7 +259,7 @@ local PALETTE_CLASSIC = {
     [EMBLEM] = "05031AFF"
 }
 
-local PALETTE_SWAGGER = {
+PALETTE_CHARLOTTE_SWAGGER = {
     name = "Swagger Charlotte",
     [PANTS]  = "1F1E25FF",
     [SHIRT]  = "28A89CFF",
@@ -326,40 +298,40 @@ local function on_character_select_load()
     _G.charSelect.character_add_health_meter(CT_WINBREAKER, HM_WINBREAKER)
 
     local CSGRAFFITICHARLIE = get_texture_info("charlottegraffiti")
-    _G.charSelect.character_add_grafitti(CT_WINBREAKER, CSGRAFFITICHARLIE)
+    _G.charSelect.character_add_graffiti(CT_WINBREAKER, CSGRAFFITICHARLIE)
 
     local CSTUNECHARLIE = audio_stream_load("holyshitmusicreal.ogg")
     _G.charSelect.character_add_menu_instrumental(CT_WINBREAKER, CSTUNECHARLIE)
     --main
     _G.charSelect.character_add_caps(E_MODEL_CUSTOM_MODEL, CAPTABLE_CHAR)
-    _G.charSelect.character_add_voice(E_MODEL_CUSTOM_MODEL, VOICETABLE_GIRL)
-    _G.charSelect.character_add_animations(E_MODEL_CUSTOM_MODEL, ANIMTABLE_WINCH)
-    _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_CHAR)
+    _G.charSelect.character_add_voice(E_MODEL_CUSTOM_MODEL, VOICETABLE_CHARLOTTEGIRL)
+    _G.charSelect.character_add_animations(E_MODEL_CUSTOM_MODEL, ANIMTABLE_CHARLOTTE)
+    _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_CHARLOTTE)
 
     --_G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)
 
     --8th
     _G.charSelect.character_add_caps(E_MODEL_8THCHA, CAPTABLE_CHAR)
-    _G.charSelect.character_add_voice(E_MODEL_8THCHA, VOICETABLE_GIRL)
-    _G.charSelect.character_add_animations(E_MODEL_8THCHA, ANIMTABLE_WINCH)
-    _G.charSelect.character_add_palette_preset(E_MODEL_8THCHA, PALETTE_CHAR)
+    _G.charSelect.character_add_voice(E_MODEL_8THCHA, VOICETABLE_CHARLOTTEGIRL)
+    _G.charSelect.character_add_animations(E_MODEL_8THCHA, ANIMTABLE_CHARLOTTE)
+    _G.charSelect.character_add_palette_preset(E_MODEL_8THCHA, PALETTE_CHARLOTTE)
 
     _G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)
 
     --classic fit
-    _G.charSelect.character_add_animations(E_MODEL_OLDFIT, ANIMTABLE_WINCH)
-    _G.charSelect.character_add_voice(E_MODEL_OLDFIT, VOICETABLE_GIRL)
-    _G.charSelect.character_add_palette_preset(E_MODEL_OLDFIT, PALETTE_CLASSIC)
+    _G.charSelect.character_add_animations(E_MODEL_OLDFIT, ANIMTABLE_CHARLOTTE)
+    _G.charSelect.character_add_voice(E_MODEL_OLDFIT, VOICETABLE_CHARLOTTEGIRL)
+    _G.charSelect.character_add_palette_preset(E_MODEL_OLDFIT, PALETTE_CHARLOTTE_CLASSIC)
 
     _G.charSelect.character_add_caps(E_MODEL_SWAGGER, CAPTABLE_CHAR)
-    _G.charSelect.character_add_voice(E_MODEL_SWAGGER, VOICETABLE_GIRL)
-    _G.charSelect.character_add_animations(E_MODEL_SWAGGER, ANIMTABLE_WINCH)
-    _G.charSelect.character_add_palette_preset(E_MODEL_SWAGGER, PALETTE_SWAGGER)
+    _G.charSelect.character_add_voice(E_MODEL_SWAGGER, VOICETABLE_CHARLOTTEGIRL)
+    _G.charSelect.character_add_animations(E_MODEL_SWAGGER, ANIMTABLE_CHARLOTTE)
+    _G.charSelect.character_add_palette_preset(E_MODEL_SWAGGER, PALETTE_CHARLOTTE_SWAGGER)
 
     --costumes
     _G.charSelect.character_add_costume(CT_WINBREAKER, "Classic Charlotte", {"SHE breaks windows or something", "brought back from the egg days"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_OLDFIT, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     _G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"She breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlotte", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
-    _G.charSelect.character_add_costume(CT_WINBREAKER, "Swagger Charlotte", {"the return of :swagger:", "B)"}, "WindowBreaker Charlotte", {r = 0, g = 150, b = 150}, E_MODEL_SWAGGER, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
+    _G.charSelect.character_add_costume(CT_WINBREAKER, "Swag Charlotte", {"the return of :swagger:", "B)"}, "WindowBreaker Charlotte", {r = 0, g = 150, b = 150}, E_MODEL_SWAGGER, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
 
     if CT_KAKTUS ~= nil then
 
@@ -381,8 +353,22 @@ local function on_character_select_load()
         _G.charSelect.character_add_costume(CT_KAKTUS, "baby kaktus", {"this little BASTARD is", "1 month younger than charlotte"}, "WindowBreaker Charlotte", {r = 172, g = 80, b = 255}, E_MODEL_BABYKAK, CT_TOAD, KAKTUS_ICON, nil, nil)
     end
 
-    if CT_KAKTUS == nil then
-    end
+    --[[if CT_BEEF_SAUL ~= nil then
+    local PALETTE_SAUL = {
+        name = "Saul",
+        [PANTS]  = "313149",
+        [SHIRT]  = "791E82",
+        [GLOVES] = "FFFFFF",
+        [SHOES]  = "D8004D",
+        [HAIR]   = "743F39",
+        [SKIN]   = "DB9C70",
+        [CAP]    = "3E8948",
+	    [EMBLEM] = "D87644"
+    }
+        _G.charSelect.character_add_palette_preset(E_MODEL_BABYSAUL, PALETTE_SAUL, "Kaktus")
+        _G.charSelect.character_add_animations(E_MODEL_BABYSAUL, ANIMTABLE_BEEF_SAUL)
+        _G.charSelect.character_add_costume(CT_BEEF_SAUL, "Baby Saul", {"this little BASTARD is", "never going to leave."}, "WindowBreaker Charlotte", {r = 162, g = 196, b = 106}, E_MODEL_BABYSAUL, CT_TOAD, nil, nil, nil)
+    end]]
 
     alts = {}
     add_moveset()
@@ -415,7 +401,7 @@ end
 local voices = {
     [VOICETABLE_WINBREAKER] = 1,
     [VOICETABLE_MUTEDMAN] = 1,
-    [VOICETABLE_GIRL] = 1,
+    [VOICETABLE_CHARLOTTEGIRL] = 1,
     [VOICETABLE_HOORAY] = 1
 }
 
