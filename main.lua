@@ -21,10 +21,11 @@ end
 --E_MODEL_GLOW = smlua_model_util_get_id("glows_geo") -- regeneffect
 
 local E_MODEL_CUSTOM_MODEL = smlua_model_util_get_id("CthewinB_geo") -- main costume
+local E_MODEL_COMFY = smlua_model_util_get_id("CthewinBomfy_geo") -- COMFY costume
 E_MODEL_BABYKAK = smlua_model_util_get_id("babykakk_geo") -- laughing my arse off about the fact that this shit is actually possible
-local E_MODEL_8THCHA = smlua_model_util_get_id("Cthe8th_geo") -- 8th doctor costume
-local E_MODEL_OLDFIT = smlua_model_util_get_id("classiclassic_geo") -- classic costume
-local E_MODEL_SWAGGER = smlua_model_util_get_id("swaggyC_geo") -- swagger costume
+--local E_MODEL_8THCHA = smlua_model_util_get_id("Cthe8th_geo") -- 8th doctor costume
+--local E_MODEL_OLDFIT = smlua_model_util_get_id("classiclassic_geo") -- classic costume
+--local E_MODEL_SWAGGER = smlua_model_util_get_id("swaggyC_geo") -- swagger costume
 
 --icons
 local TEX_CUSTOM_LIFE_ICON = get_texture_info("Cicon")
@@ -237,14 +238,38 @@ local CAPTABLE_CHAR = {
 
 PALETTE_CHARLOTTE = {
     name = "Charlotte",
-    [PANTS]  = "232938FF",
-    [SHIRT]  = "0E112BFF",
+    [PANTS]  = "111217FF",
+    [SHIRT]  = "0F0D32FF",
     [GLOVES] = "E5E5FFFF",
-    [SHOES]  = "1F1F23FF",
-    [HAIR]   = "985A2CFF",
-    [SKIN]   = "FF9D6BFF",
+    [SHOES]  = "0F0D32FF",
+    [HAIR]   = "7A4D24FF",
+    [SKIN]   = "F49969FF",
     [CAP]    = "27123DFF",
     [EMBLEM] = "05031AFF"
+}
+
+PALETTE_TRANS = {
+    name = "Transgender",
+    [PANTS]  = "FFFFFFFF",
+    [SHIRT]  = "81346AFF",
+    [GLOVES] = "E5E5FFFF",
+    [SHOES]  = "5BCEFAFF",
+    [HAIR]   = "4198B8FF",
+    [SKIN]   = "F49969FF",
+    [CAP]    = "27123DFF",
+    [EMBLEM] = "05031AFF"
+}
+
+PALETTE_COMFY = {
+    name = "Comfy",
+    [PANTS]  = "525252FF",
+    [SHIRT]  = "100F24FF",
+    [GLOVES] = "FFFFFFFF",
+    [SHOES]  = "04040FFF",
+    [HAIR]   = "7A4D24FF",
+    [SKIN]   = "F49969FF",
+    [CAP]    = "27123DFF",
+    [EMBLEM] = "A80932FF"
 }
 
 PALETTE_CHARLOTTE_CLASSIC = {
@@ -269,6 +294,18 @@ PALETTE_CHARLOTTE_SWAGGER = {
     [SKIN]   = "FF9D6BFF",
     [CAP]    = "27123DFF",
     [EMBLEM] = "05031AFF"
+}
+
+PALETTE_MADMARCUS = {
+    name = "Mad Marcus",
+    [PANTS]  = "515933FF",
+    [SHIRT]  = "E52703FF",
+    [GLOVES] = "FFFFFFFF",
+    [SHOES]  = "6A0400FF",
+    [HAIR]   = "6A0400FF",
+    [SKIN]   = "FFD987FF",
+    [CAP]    = "E52703FF",
+    [EMBLEM] = "E52703FF"
 }
 
 local HM_WINBREAKER= {
@@ -307,18 +344,21 @@ local function on_character_select_load()
     _G.charSelect.character_add_voice(E_MODEL_CUSTOM_MODEL, VOICETABLE_CHARLOTTEGIRL)
     _G.charSelect.character_add_animations(E_MODEL_CUSTOM_MODEL, ANIMTABLE_CHARLOTTE)
     _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_CHARLOTTE)
+    _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_TRANS)
+
+    _G.charSelect.character_add_palette_preset(E_MODEL_MARIO, PALETTE_MADMARCUS)
 
     --_G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)
 
-    --8th
-    _G.charSelect.character_add_caps(E_MODEL_8THCHA, CAPTABLE_CHAR)
-    _G.charSelect.character_add_voice(E_MODEL_8THCHA, VOICETABLE_CHARLOTTEGIRL)
-    _G.charSelect.character_add_animations(E_MODEL_8THCHA, ANIMTABLE_CHARLOTTE)
-    _G.charSelect.character_add_palette_preset(E_MODEL_8THCHA, PALETTE_CHARLOTTE)
+    --gold
+    _G.charSelect.character_add_caps(E_MODEL_COMFY, CAPTABLE_CHAR)
+    _G.charSelect.character_add_voice(E_MODEL_COMFY, VOICETABLE_CHARLOTTEGIRL)
+    _G.charSelect.character_add_animations(E_MODEL_COMFY, ANIMTABLE_CHARLOTTE)
+    _G.charSelect.character_add_palette_preset(E_MODEL_COMFY, PALETTE_COMFY)
 
     _G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)
 
-    --classic fit
+    --[[classic fit
     _G.charSelect.character_add_animations(E_MODEL_OLDFIT, ANIMTABLE_CHARLOTTE)
     _G.charSelect.character_add_voice(E_MODEL_OLDFIT, VOICETABLE_CHARLOTTEGIRL)
     _G.charSelect.character_add_palette_preset(E_MODEL_OLDFIT, PALETTE_CHARLOTTE_CLASSIC)
@@ -327,11 +367,13 @@ local function on_character_select_load()
     _G.charSelect.character_add_voice(E_MODEL_SWAGGER, VOICETABLE_CHARLOTTEGIRL)
     _G.charSelect.character_add_animations(E_MODEL_SWAGGER, ANIMTABLE_CHARLOTTE)
     _G.charSelect.character_add_palette_preset(E_MODEL_SWAGGER, PALETTE_CHARLOTTE_SWAGGER)
-
+]]
     --costumes
-    _G.charSelect.character_add_costume(CT_WINBREAKER, "Classic Charlotte", {"SHE breaks windows or something", "brought back from the egg days"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_OLDFIT, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
+    _G.charSelect.character_add_costume(CT_WINBREAKER, "comfy Charlotte", {"she", "comfy"}, "WindowBreaker Charlotte", {r = 0, g = 0, b = 60}, E_MODEL_COMFY, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
+    --[[ _G.charSelect.character_add_costume(CT_WINBREAKER, "Classic Charlotte", {"SHE breaks windows or something", "brought back from the egg days"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_OLDFIT, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     _G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"She breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlotte", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     _G.charSelect.character_add_costume(CT_WINBREAKER, "Swag Charlotte", {"the return of :swagger:", "B)"}, "WindowBreaker Charlotte", {r = 0, g = 150, b = 150}, E_MODEL_SWAGGER, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
+    ]]
 
     if CT_KAKTUS ~= nil then
 
@@ -382,6 +424,9 @@ local CST_HEATHER   = 4
 local CST_CHRRL = 5
 
 function charlie_update(m)
+  --  if charSelect.character_get_current_number(m.playerIndex) == CT_WINBREAKER and
+  --  m.marioObj.header.gfx.animInfo.animID == CHAR_ANIM_STAR_DANCE then
+
     --regenerate
     if charSelect.character_get_current_number(m.playerIndex) == CT_WINBREAKER
     and charSelect.character_get_current_costume(m.playerIndex) == CST_DOCTOR and regenActions[m.action] then
@@ -506,3 +551,7 @@ function render_ds_metre()
     end
 end
 hook_event(HOOK_ON_HUD_RENDER_BEHIND, render_ds_metre)
+
+function is_charlotte()
+    return CT_WINBREAKER == charSelect.character_get_current_number()
+end

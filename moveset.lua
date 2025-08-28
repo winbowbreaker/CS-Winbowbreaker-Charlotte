@@ -10,6 +10,7 @@ for i = 0, MAX_PLAYERS do
     c.timer = 0
     c.backlaunch = 0
     c.savedmomentum = 0
+    c.brownieseaten = 0
 end
 
 --wallslide
@@ -60,39 +61,6 @@ end
 hook_mario_action(ACT_WALL_SLIDE, { every_frame = act_wall_slide, gravity = act_wall_slide_gravity } )
 
 --wallslide above
-
-ACT_CUSTOMTWIRLING = allocate_mario_action(ACT_GROUP_AIRBORNE|ACT_FLAG_ALLOW_VERTICAL_WIND_ACTION|ACT_FLAG_ATTACKING|ACT_FLAG_AIR|ACT_FLAG_DIVING)
-function act_customtwirling(m)
-    local c = gCharlieStates[m.playerIndex]
-    
-    if (m.input & INPUT_ZERO_MOVEMENT ~= 0) then
-        mario_set_forward_vel(m, m.forwardVel / 1.1)
-        c.facing = m.intendedYaw
-    m.faceAngle.y = c.facing
-    end
-     if (m.input & INPUT_ZERO_MOVEMENT == 0) then
-        mario_set_forward_vel(m, m.forwardVel + 2)
-        if m.forwardVel > 55 then
-            mario_set_forward_vel(m, 55)
-        end
-    end
-
-    c.facing = m.intendedYaw
-    m.faceAngle.y = c.facing
-
-    local stepResult = perform_air_step(m, 0)
-    if stepResult == AIR_STEP_LANDED then --hitting the gound
-        return set_mario_action(m, ACT_IDLE, 0)
-    elseif m.wall then -- otherwise if we hit a wall
-        m.faceAngle.y = -c.facing
-        mario_bonk_reflection(m, true)
-    end
-    c.facing = m.intendedYaw
-    m.faceAngle.y = c.facing
-    m.vel.y = -10
-    smlua_anim_util_set_animation(m.marioObj, "spinnylad")
-end
-hook_mario_action(ACT_CUSTOMTWIRLING, act_customtwirling)
 
 ACT_LAUNCHEDBYEXPLODE = allocate_mario_action(ACT_GROUP_AIRBORNE|ACT_FLAG_ALLOW_VERTICAL_WIND_ACTION|ACT_FLAG_ATTACKING|ACT_FLAG_AIR|ACT_FLAG_DIVING)
 function act_launchedbyexplode(m)
@@ -240,6 +208,7 @@ local regenActions = {
 
 function charlie_update(m)
     local c = gCharlieStates[m.playerIndex]
+    if m.playerIndex == 0 then
     --djui_chat_message_create("momentum".."\\#dcdcdc\\: "..c.savedmomentum)
     --regenerate
     if charSelect.character_get_current_number(m.playerIndex) == CT_WINBREAKER
@@ -256,12 +225,23 @@ function charlie_update(m)
             nil)
     end
 
+    vec3f_copy(m.marioObj.header.gfx.scale, c.scale)
+    c.scale = { x = 1 + c.brownieseaten, y = 1, z = 1 + c.brownieseaten}
+
+    if smlua_anim_util_get_current_animation_name(m.marioObj) == "idlebrownies" then
+        c.brownieseaten = c.brownieseaten + 0.00025
+    end
+
+    if c.brownieseaten > 0.15 then
+        c.brownieseaten = 0.15
+    end
+
     --idling stuff goes here
     if m.action == ACT_IDLE and is_anim_at_end(m) ~= 0 then
         local idleAnims = {
             "idlemoment",
             "idlemoment",
-            "idlemoment",
+            --"idlebrownies",
             "idlealtt",
             "idleposeing"
             -- "add whatever else"
@@ -274,7 +254,7 @@ function charlie_update(m)
     end
 
     --bj_scale_xyz(m.marioObj, c.scale.x, c.scale.y, c.scale.z)
-    vec3f_copy(m.marioObj.header.gfx.scale, c.scale)
+    
 
     --[[if m.vel.y >= 0 or m.action == ACT_GROUND_POUND_LAND or m.action ~= ACT_IDLE or m.action == ACT_BUTT_SLIDE_STOP or m.action == ACT_SPINNYTHING then
         c.scale = { x = m.vel.y * -0.0015 + 1, y = m.vel.y*  0.0015 + 1, z = m.vel.y * -0.0015 + 1 }
@@ -312,26 +292,6 @@ function charlie_update(m)
     --  return set_mario_action(m, ACT_IDLESECOND, 0)
     end
 
-    if m.action == ACT_IDLE or m.action == ACT_BUTT_SLIDE_STOP then
-        m.vel.y = m.vel.y * 0.5
-    end
-
-    if m.action == ACT_FREEFALL_LAND_STOP and m.vel.y < 0 then
-        m.vel.y = m.vel.y * 0.5
-    end
-
-    if m.action == ACT_LONG_JUMP and m.forwardVel < -10 then
-        m.forwardVel = m.forwardVel - 1
-    end
-
-    if m.action == ACT_WALKING then
-        c.scale = { x = 1, y = 1, z = 1 }
-    end
-
-    if m.action == ACT_WATER_PLUNGE then
-        c.scale = { x = 1, y = 1, z = 1 }
-    end
-
     --[[if m.prevAction == ACT_LONG_JUMP and m.action == ACT_ROCKETING and m.controller.buttonDown & B_BUTTON == 0 then 
         return set_mario_action(m, ACT_FORWARD_ROLLOUT, 0)
     end]]
@@ -344,11 +304,6 @@ function charlie_update(m)
             c.scale = { x = 1.5, y = 0.5, z = 1.5 }
         end
     end]]
-
-    if m.prevAction == ACT_TRIPLE_JUMP and m.action == ACT_GROUND_POUND then
-        c.scale = { x = 0.75, y = 1.25, z = 0.75 }
-        set_mario_action(m, ACT_SLIDE_KICK, 0)
-    end
 
     if m.action == ACT_SIDE_FLIP and m.vel.y < 0 then
         m.action = ACT_TWIRLING
@@ -506,6 +461,7 @@ function charlie_update(m)
                     function(o)
                     end)
             end]]
+end
 end
 _G.charSelect.character_hook_moveset(CT_WINBREAKER, HOOK_MARIO_UPDATE, charlie_update)
 
