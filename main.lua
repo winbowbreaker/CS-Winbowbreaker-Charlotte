@@ -298,7 +298,7 @@ PALETTE_CHARLOTTE_SWAGGER = {
 
 PALETTE_MADMARCUS = {
     name = "Mad Marcus",
-    [PANTS]  = "515933FF",
+    [PANTS]  = "336E54FF",
     [SHIRT]  = "E52703FF",
     [GLOVES] = "FFFFFFFF",
     [SHOES]  = "6A0400FF",
@@ -329,8 +329,8 @@ local CSloaded = false
 local function on_character_select_load()
     CT_WINBREAKER = _G.charSelect.character_add("Charlotte", {"she breaks windows", "probably", "voiced by Chrrli temporarily"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_CUSTOM_MODEL, CT_MARIO, TEX_CUSTOM_LIFE_ICON)
 
-    --_G.charSelect.character_set_category(CT_WINBREAKER, "Smackhead")
     _G.charSelect.character_set_category(CT_WINBREAKER, "DXA")
+    _G.charSelect.character_set_category(CT_WINBREAKER, "Silent Hill server")
     _G.charSelect.character_set_category(CT_WINBREAKER, "Squishy Workshop")
     _G.charSelect.character_add_health_meter(CT_WINBREAKER, HM_WINBREAKER)
 
@@ -343,10 +343,10 @@ local function on_character_select_load()
     _G.charSelect.character_add_caps(E_MODEL_CUSTOM_MODEL, CAPTABLE_CHAR)
     _G.charSelect.character_add_voice(E_MODEL_CUSTOM_MODEL, VOICETABLE_CHARLOTTEGIRL)
     _G.charSelect.character_add_animations(E_MODEL_CUSTOM_MODEL, ANIMTABLE_CHARLOTTE)
-    _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_CHARLOTTE)
-    _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_TRANS)
+    _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_CHARLOTTE, "charlotte")
+    _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_TRANS, "trans")
 
-    _G.charSelect.character_add_palette_preset(E_MODEL_MARIO, PALETTE_MADMARCUS)
+    _G.charSelect.character_add_palette_preset(E_MODEL_MARIO, PALETTE_MADMARCUS, "mad marcus")
 
     --_G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)
 
@@ -354,7 +354,7 @@ local function on_character_select_load()
     _G.charSelect.character_add_caps(E_MODEL_COMFY, CAPTABLE_CHAR)
     _G.charSelect.character_add_voice(E_MODEL_COMFY, VOICETABLE_CHARLOTTEGIRL)
     _G.charSelect.character_add_animations(E_MODEL_COMFY, ANIMTABLE_CHARLOTTE)
-    _G.charSelect.character_add_palette_preset(E_MODEL_COMFY, PALETTE_COMFY)
+    _G.charSelect.character_add_palette_preset(E_MODEL_COMFY, PALETTE_COMFY, "comfy")
 
     _G.charSelect.character_add_celebration_star(E_MODEL_CUSTOM_MODEL, E_MODEL_CUSTOM_STAR, TEX_CUSTOM_STAR_ICON)
 
@@ -369,7 +369,7 @@ local function on_character_select_load()
     _G.charSelect.character_add_palette_preset(E_MODEL_SWAGGER, PALETTE_CHARLOTTE_SWAGGER)
 ]]
     --costumes
-    _G.charSelect.character_add_costume(CT_WINBREAKER, "comfy Charlotte", {"she", "comfy"}, "WindowBreaker Charlotte", {r = 0, g = 0, b = 60}, E_MODEL_COMFY, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
+    _G.charSelect.character_add_costume(CT_WINBREAKER, "comfy Charlotte", {"she", "comfy"}, "WindowBreaker Charlotte", {r = 20, g = 0, b = 150}, E_MODEL_COMFY, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     --[[ _G.charSelect.character_add_costume(CT_WINBREAKER, "Classic Charlotte", {"SHE breaks windows or something", "brought back from the egg days"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_OLDFIT, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     _G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"She breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlotte", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     _G.charSelect.character_add_costume(CT_WINBREAKER, "Swag Charlotte", {"the return of :swagger:", "B)"}, "WindowBreaker Charlotte", {r = 0, g = 150, b = 150}, E_MODEL_SWAGGER, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
@@ -390,7 +390,7 @@ local function on_character_select_load()
         [CAP]    = "3E8948",
 	    [EMBLEM] = "D87644"
     }
-        _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_KAKTUS)
+        _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_KAKTUS, "kaktuse")
         _G.charSelect.character_add_palette_preset(E_MODEL_BABYKAK, PALETTE_KAKTUS, "Kaktus")
         _G.charSelect.character_add_costume(CT_KAKTUS, "baby kaktus", {"this little BASTARD is", "1 month younger than charlotte"}, "WindowBreaker Charlotte", {r = 172, g = 80, b = 255}, E_MODEL_BABYKAK, CT_TOAD, KAKTUS_ICON, nil, nil)
     end
