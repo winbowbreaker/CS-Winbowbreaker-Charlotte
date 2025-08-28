@@ -369,7 +369,7 @@ local function on_character_select_load()
     _G.charSelect.character_add_palette_preset(E_MODEL_SWAGGER, PALETTE_CHARLOTTE_SWAGGER)
 ]]
     --costumes
-    _G.charSelect.character_add_costume(CT_WINBREAKER, "comfy Charlotte", {"she", "comfy"}, "WindowBreaker Charlotte", {r = 20, g = 0, b = 150}, E_MODEL_COMFY, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
+    _G.charSelect.character_add_costume(CT_WINBREAKER, "comfy Charlotte", {"standing at 5 feet and 9 inches, weighing in at 146 pounds, she is here to...", "have a comfortable rest."}, "WindowBreaker Charlotte", {r = 20, g = 0, b = 150}, E_MODEL_COMFY, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     --[[ _G.charSelect.character_add_costume(CT_WINBREAKER, "Classic Charlotte", {"SHE breaks windows or something", "brought back from the egg days"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_OLDFIT, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     _G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"She breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlotte", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     _G.charSelect.character_add_costume(CT_WINBREAKER, "Swag Charlotte", {"the return of :swagger:", "B)"}, "WindowBreaker Charlotte", {r = 0, g = 150, b = 150}, E_MODEL_SWAGGER, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
