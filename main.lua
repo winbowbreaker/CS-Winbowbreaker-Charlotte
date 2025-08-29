@@ -34,33 +34,33 @@ local TEX_GIRL_LIFE_ICON = get_texture_info("Cicongirl")
 -- All Located in "sound" Name them whatever you want. Remember to include the .ogg extension
 local VOICETABLE_WINBREAKER = {
     [CHAR_SOUND_OKEY_DOKEY] = 'dsi-startup2.mp3', -- Starting game
-    [CHAR_SOUND_LETS_A_GO] = 'levelstart2.ogg', -- Starting level
+    [CHAR_SOUND_LETS_A_GO] = 'Silent.ogg', -- Starting level
     [CHAR_SOUND_PUNCH_YAH] = 'Silent.ogg', -- Punch 1
     [CHAR_SOUND_PUNCH_WAH] = 'Silent.ogg', -- Punch 2
     [CHAR_SOUND_PUNCH_HOO] = {'Silent.ogg', 'Silent.ogg'}, -- Punch 3
     [CHAR_SOUND_YAH_WAH_HOO] = {'Silent.ogg', 'Silent.ogg', 'Silent.ogg'}, -- First/Second jump sounds
-    [CHAR_SOUND_HOOHOO] = {'yipeee.ogg', 'wEee.ogg'}, -- Third jump sound
-    [CHAR_SOUND_YAHOO_WAHA_YIPPEE] = {'wee.ogg', 'yipeee.ogg', 'wEee.ogg'}, -- Triple jump sounds
+    [CHAR_SOUND_HOOHOO] = {'charwup.ogg', 'charwup.ogg'}, -- Third jump sound
+    [CHAR_SOUND_YAHOO_WAHA_YIPPEE] = {'wahoo2.ogg', 'yippeeorsomething.ogg', 'charhooray.ogg'}, -- Triple jump sounds
     [CHAR_SOUND_UH] = 'walldonk.ogg', -- Wall bonk
-    [CHAR_SOUND_UH2] = 'wup.ogg', -- Landing after long jump
-    [CHAR_SOUND_UH2_2] = 'Silent.ogg', -- Same sound as UH2; jumping onto ledge
-    [CHAR_SOUND_HAHA] = 'lag.ogg', -- Landing triple jump
-    [CHAR_SOUND_YAHOO] = {'wahooo.ogg', 'wahoo2.ogg', 'wahoo3.ogg'}, -- Long jump
+    [CHAR_SOUND_UH2] = 'charhup.ogg', -- Landing after long jump
+    [CHAR_SOUND_UH2_2] = 'charhup.ogg', -- Same sound as UH2; jumping onto ledge
+    [CHAR_SOUND_HAHA] = 'charoop.ogg', -- Landing triple jump
+    [CHAR_SOUND_YAHOO] = {'wahooorsomething.ogg', 'wahoo2.ogg', 'yippeeorsomethingg.ogg', 'charhooray.ogg'}, -- Long jump
     [CHAR_SOUND_DOH] = 'walldonk.ogg', -- Long jump wall bonk
-    [CHAR_SOUND_WHOA] = 'wup.ogg', -- Grabbing ledge
-    [CHAR_SOUND_EEUH] = 'yup.ogg', -- Climbing over ledge
-    [CHAR_SOUND_WAAAOOOW] = 'ohno.ogg', -- Falling a long distance
-    [CHAR_SOUND_TWIRL_BOUNCE] = {'wEee.ogg', 'yipeee.ogg'}, -- Bouncing off of a flower spring
-    [CHAR_SOUND_GROUND_POUND_WAH] = 'Silent.ogg', 
-    [CHAR_SOUND_HRMM] = 'Silent.ogg', -- Lifting something
-    [CHAR_SOUND_HERE_WE_GO] = {'jellybaby.mp3', "beautiful.mp3"}, -- Star get
+    [CHAR_SOUND_WHOA] = 'charwup.ogg', -- Grabbing ledge
+    [CHAR_SOUND_EEUH] = 'chareffort.ogg', -- Climbing over ledge
+    [CHAR_SOUND_WAAAOOOW] = 'Silent.ogg', -- Falling a long distance
+    [CHAR_SOUND_TWIRL_BOUNCE] = {'yippeeorsomething.ogg', 'wahooorsomething.ogg', 'yippeeorsomethingg.ogg'}, -- Bouncing off of a flower spring
+    [CHAR_SOUND_GROUND_POUND_WAH] = 'Silent.ogg',
+    [CHAR_SOUND_HRMM] = 'chareffort.ogg', -- Lifting something
+    [CHAR_SOUND_HERE_WE_GO] = {'transrights.ogg', "akaktuseoncesaidhooray.ogg"}, -- Star get
     [CHAR_SOUND_SO_LONGA_BOWSER] = 'fuckyou.ogg', -- Throwing Bowser
 --DAMAGE
     [CHAR_SOUND_ATTACKED] = 'walldonk.ogg', -- Damaged
-    [CHAR_SOUND_PANTING] = 'hurting1.ogg', -- Low health
-    [CHAR_SOUND_ON_FIRE] = {'FUCKFUCKSHITAUGH.ogg', 'agonyy.ogg', 'FUCKAGH.ogg'}, -- Burned
+    [CHAR_SOUND_PANTING] = 'Silent.ogg', -- Low health
+    [CHAR_SOUND_ON_FIRE] = 'charscream.ogg', -- Burned
 --SLEEP SOUNDS
-    [CHAR_SOUND_IMA_TIRED] = {'flintandsteeel.ogg', 'igiofn.ogg', 'flameon.ogg', 'oppengangamstyle.ogg'}, -- Mario feeling tired
+    [CHAR_SOUND_IMA_TIRED] = 'Silent.ogg', -- Mario feeling tired
     [CHAR_SOUND_YAWNING] = 'Silent.ogg', -- Mario yawning before he sits down to sleep
     [CHAR_SOUND_SNORING1] = 'Silent.ogg', -- Snore Inhale
     [CHAR_SOUND_SNORING2] = 'Silent.ogg', -- Exhale
@@ -70,9 +70,9 @@ local VOICETABLE_WINBREAKER = {
     [CHAR_SOUND_COUGHING2] = 'Cough2.ogg', -- Cough take 2
     [CHAR_SOUND_COUGHING3] = 'Cough3.ogg', -- Cough take 3
 --DEATH
-    [CHAR_SOUND_DYING] = 'dead.ogg', -- Dying from damage
+    [CHAR_SOUND_DYING] = 'chardead.ogg', -- Dying from damage
     [CHAR_SOUND_DROWNING] = 'drownt.ogg', -- Running out of air underwater
-    [CHAR_SOUND_MAMA_MIA] = 'ohfuckoff.ogg', -- Booted out of level
+    [CHAR_SOUND_MAMA_MIA] = 'Silent.ogg', -- Booted out of level
 --CUSTOM
   --  [CHAR_SOUND_FLAMEON] = 'flintandsteeel.ogg',
 }
@@ -327,7 +327,7 @@ local HM_WINBREAKER= {
 
 local CSloaded = false
 local function on_character_select_load()
-    CT_WINBREAKER = _G.charSelect.character_add("Charlotte", {"she breaks windows", "probably", "voiced by Chrrli temporarily"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_CUSTOM_MODEL, CT_MARIO, TEX_CUSTOM_LIFE_ICON)
+    CT_WINBREAKER = _G.charSelect.character_add("Charlotte", {"she breaks windows", "probably"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_CUSTOM_MODEL, CT_MARIO, TEX_CUSTOM_LIFE_ICON)
 
     _G.charSelect.character_set_category(CT_WINBREAKER, "DXA")
     _G.charSelect.character_set_category(CT_WINBREAKER, "Silent Hill server")
@@ -341,7 +341,7 @@ local function on_character_select_load()
     _G.charSelect.character_add_menu_instrumental(CT_WINBREAKER, CSTUNECHARLIE)
     --main
     _G.charSelect.character_add_caps(E_MODEL_CUSTOM_MODEL, CAPTABLE_CHAR)
-    _G.charSelect.character_add_voice(E_MODEL_CUSTOM_MODEL, VOICETABLE_CHARLOTTEGIRL)
+    _G.charSelect.character_add_voice(E_MODEL_CUSTOM_MODEL, VOICETABLE_WINBREAKER)
     _G.charSelect.character_add_animations(E_MODEL_CUSTOM_MODEL, ANIMTABLE_CHARLOTTE)
     _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_CHARLOTTE, "charlotte")
     _G.charSelect.character_add_palette_preset(E_MODEL_CUSTOM_MODEL, PALETTE_TRANS, "trans")
@@ -352,7 +352,7 @@ local function on_character_select_load()
 
     --gold
     _G.charSelect.character_add_caps(E_MODEL_COMFY, CAPTABLE_CHAR)
-    _G.charSelect.character_add_voice(E_MODEL_COMFY, VOICETABLE_CHARLOTTEGIRL)
+    _G.charSelect.character_add_voice(E_MODEL_COMFY, VOICETABLE_WINBREAKER)
     _G.charSelect.character_add_animations(E_MODEL_COMFY, ANIMTABLE_CHARLOTTE)
     _G.charSelect.character_add_palette_preset(E_MODEL_COMFY, PALETTE_COMFY, "comfy")
 
@@ -369,7 +369,7 @@ local function on_character_select_load()
     _G.charSelect.character_add_palette_preset(E_MODEL_SWAGGER, PALETTE_CHARLOTTE_SWAGGER)
 ]]
     --costumes
-    _G.charSelect.character_add_costume(CT_WINBREAKER, "comfy Charlotte", {"standing at 5 feet and 9 inches, weighing in at 146 pounds, she is here to...", "have a comfortable rest."}, "WindowBreaker Charlotte", {r = 20, g = 0, b = 150}, E_MODEL_COMFY, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
+    _G.charSelect.character_add_costume(CT_WINBREAKER, "comfy Charlotte", {"standing at 5 feet and 8 inches, weighing in at 146 pounds, she is here to...", "have a comfortable rest."}, "WindowBreaker Charlotte", {r = 20, g = 0, b = 150}, E_MODEL_COMFY, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     --[[ _G.charSelect.character_add_costume(CT_WINBREAKER, "Classic Charlotte", {"SHE breaks windows or something", "brought back from the egg days"}, "WindowBreaker Charlotte", {r = 85, g = 0, b = 150}, E_MODEL_OLDFIT, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     _G.charSelect.character_add_costume(CT_WINBREAKER, "The Doctor", {"She breaks windows or time", "would you like a jellybaby officer?"}, "WindowBreaker Charlotte", {r = 0, g = 59, b = 111}, E_MODEL_8THCHA, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
     _G.charSelect.character_add_costume(CT_WINBREAKER, "Swag Charlotte", {"the return of :swagger:", "B)"}, "WindowBreaker Charlotte", {r = 0, g = 150, b = 150}, E_MODEL_SWAGGER, CT_WINBREAKER, TEX_LIFE_ICON, nil, nil)
